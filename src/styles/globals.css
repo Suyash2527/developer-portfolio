@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* ── CSS Custom Properties ──────────────────────────────────────── */
+:root {
+  --bg: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #161616;
+  --text-primary: #ffffff;
+  --text-muted: #a1a1aa;
+  --text-subtle: #52525b;
+  --accent: #7c3aed;
+  --accent-light: #9d5efd;
+  --accent-glow: rgba(124, 58, 237, 0.3);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-light: rgba(255, 255, 255, 0.12);
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-hover: rgba(255, 255, 255, 0.07);
+}
+
+/* ── Base Reset ─────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Selection ──────────────────────────────────────────────────── */
+::selection {
+  background-color: rgba(124, 58, 237, 0.35);
+  color: #fff;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.5);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.8);
+}
+
+/* ── Typography ─────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* ── Glassmorphism Utilities ─────────────────────────────────────── */
+@layer components {
+  .glass-card {
+    @apply bg-white/[0.04] border border-white/[0.06] backdrop-blur-xl;
+  }
+
+  .glass-card-hover {
+    @apply hover:bg-white/[0.07] hover:border-white/[0.12] transition-all duration-300;
+  }
+
+  .accent-gradient {
+    background: linear-gradient(135deg, #7c3aed, #9d5efd);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #fff 30%, #a1a1aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-accent {
+    background: linear-gradient(135deg, #7c3aed, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-padding {
+    @apply py-24 md:py-32 px-6 md:px-8 lg:px-16;
+  }
+
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .glow-button {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #7c3aed, #9d5efd);
+    transition: all 0.3s ease;
+  }
+  .glow-button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #9d5efd, #7c3aed);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .glow-button:hover::before {
+    opacity: 1;
+  }
+  .glow-button:hover {
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.5), 0 0 80px rgba(124, 58, 237, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .outline-button {
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(16px);
+    transition: all 0.3s ease;
+  }
+  .outline-button:hover {
+    border-color: rgba(124, 58, 237, 0.5);
+    background: rgba(124, 58, 237, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .section-label {
+    @apply text-accent text-sm font-semibold tracking-widest uppercase;
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+}
+
+/* ── Animated Gradient Background ───────────────────────────────── */
+.animated-gradient-bg {
+  background: radial-gradient(at 40% 20%, rgba(124,58,237,0.12) 0px, transparent 50%),
+              radial-gradient(at 80% 0%, rgba(93,33,208,0.08) 0px, transparent 50%),
+              radial-gradient(at 0% 50%, rgba(124,58,237,0.06) 0px, transparent 50%),
+              radial-gradient(at 80% 100%, rgba(75,0,130,0.08) 0px, transparent 50%),
+              radial-gradient(at 20% 80%, rgba(124,58,237,0.04) 0px, transparent 50%);
+}
+
+/* ── Focus Ring ─────────────────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid rgba(124, 58, 237, 0.8);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Noise Texture Overlay ──────────────────────────────────────── */
+.noise-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ── Light Mode ─────────────────────────────────────────────────── */
+.light {
+  --bg: #f9f9f9;
+  --bg-secondary: #f2f2f2;
+  --text-primary: #0a0a0a;
+  --text-muted: #52525b;
+  --border: rgba(0, 0, 0, 0.08);
+  --glass: rgba(0, 0, 0, 0.03);
+}
+
+/* ── Custom Animations ──────────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ── Prose styles for blog ──────────────────────────────────────── */
+.prose-portfolio {
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.prose-portfolio h2 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.prose-portfolio h3 {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.prose-portfolio code {
+  background: rgba(124, 58, 237, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.875em;
+  color: #c084fc;
+}
+.prose-portfolio pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+.prose-portfolio a {
+  color: var(--accent-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
