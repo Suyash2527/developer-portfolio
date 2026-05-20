@@ -17,17 +17,17 @@ export function Reveal({
   children,
   className,
   delay = 0,
-  direction = "up",
+  direction = "left", // Brutalist default is slide from left
   once = true,
 }: RevealProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once, margin: "-80px" });
 
   const directionMap = {
-    up: { y: 40, x: 0 },
-    down: { y: -40, x: 0 },
-    left: { y: 0, x: 40 },
-    right: { y: 0, x: -40 },
+    up: { y: 24, x: 0 },
+    down: { y: -24, x: 0 },
+    left: { y: 0, x: -30 },
+    right: { y: 0, x: 30 },
     none: { y: 0, x: 0 },
   };
 
@@ -39,9 +39,9 @@ export function Reveal({
       initial={initial}
       animate={isInView ? { opacity: 1, x: 0, y: 0 } : initial}
       transition={{
-        duration: 0.7,
+        duration: 0.65,
         delay,
-        ease: [0.25, 0.4, 0.25, 1],
+        ease: [0.77, 0, 0.175, 1], // Brutalist ease curve
       }}
       className={cn(className)}
     >
@@ -82,6 +82,6 @@ export const revealItem = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] },
+    transition: { duration: 0.6, ease: [0.77, 0, 0.175, 1] },
   },
 };

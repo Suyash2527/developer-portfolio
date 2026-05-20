@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { toast } from "react-hot-toast";
 import { Reveal } from "@/components/animations/Reveal";
 import { submitContact } from "@/services/firebase/firestore";
@@ -13,7 +12,7 @@ export default function ContactSection() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    subject: "",
+    subject: "Inquiry from Portfolio",
     message: "",
   });
   const [loading, setLoading] = useState(false);
@@ -27,212 +26,125 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
-      toast.error("Please fill in all required fields.");
+      toast.error("MISSING REQUIRED FIELDS.");
       return;
     }
     setLoading(true);
     try {
       await submitContact(form);
-      toast.success("Message sent! I'll get back to you shortly.");
-      setForm({ name: "", email: "", subject: "", message: "" });
+      toast.success("MESSAGE DELIVERED.");
+      setForm({ name: "", email: "", subject: "Inquiry from Portfolio", message: "" });
     } catch {
-      toast.error("Failed to send message. Please try email directly.");
+      toast.error("DELIVERY FAILED. TRY EMAIL DIRECTLY.");
     } finally {
       setLoading(false);
     }
   };
 
-  const SOCIALS = [
-    { label: "GitHub", href: SOCIAL_LINKS.github, icon: "🐙" },
-    { label: "LinkedIn", href: SOCIAL_LINKS.linkedin, icon: "💼" },
-    { label: "Twitter", href: SOCIAL_LINKS.twitter, icon: "𝕏" },
-    { label: "Email", href: SOCIAL_LINKS.email, icon: "📧" },
-  ];
-
   return (
-    <section id="contact" className="section-padding relative bg-background-secondary">
-      <div className="orb w-96 h-96 bg-accent/15 top-0 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-
-      <div className="container-max relative">
-        {/* Header */}
-        <Reveal className="text-center mb-16">
-          <span className="section-label mb-4 block">Get in Touch</span>
-          <h2 className="text-section-title font-black text-white mb-5">
-            Let&apos;s build something{" "}
-            <span className="text-gradient-accent">together</span>
+    <section id="contact" className="py-24 md:py-32 relative bg-[#f5f0e8]">
+      <div className="container-max px-6 md:px-10 relative z-10">
+        
+        {/* Giant Header */}
+        <Reveal>
+          <h2 className="font-heading text-[clamp(60px,11vw,160px)] leading-[0.85] tracking-[-0.02em] uppercase text-[#0f0f0f] mb-12">
+            SAY HELLO<span className="text-[#dd4433]">.</span>
           </h2>
-          <p className="text-text-muted text-lg max-w-xl mx-auto leading-relaxed font-light">
-            Have a project in mind? I&apos;m available for freelance work and
-            open to full-time opportunities.
-          </p>
         </Reveal>
 
-        <div className="grid lg:grid-cols-5 gap-10 items-start">
-          {/* Left info */}
-          <Reveal direction="left" className="lg:col-span-2">
-            <div className="space-y-6">
-              <div className="glass-card rounded-2xl p-6 border border-white/[0.06]">
-                <h3 className="text-base font-semibold text-white mb-4">
-                  Contact Information
-                </h3>
-                <div className="space-y-3">
-                  <a
-                    href={SOCIAL_LINKS.email}
-                    className="flex items-center gap-3 text-text-muted hover:text-white transition-colors duration-200 text-sm group"
-                  >
-                    <span className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-sm group-hover:bg-accent/20 transition-colors">
-                      ✉️
-                    </span>
-                    you@example.com
-                  </a>
-                  <div className="flex items-center gap-3 text-text-muted text-sm">
-                    <span className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-sm">
-                      📍
-                    </span>
-                    India (IST, UTC+5:30)
-                  </div>
-                  <div className="flex items-center gap-3 text-text-muted text-sm">
-                    <span className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-sm">
-                      ⏱️
-                    </span>
-                    Typically responds within 24h
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="glass-card rounded-2xl p-6 border border-white/[0.06]">
-                <h3 className="text-base font-semibold text-white mb-4">
-                  Connect Online
-                </h3>
-                <div className="grid grid-cols-2 gap-3">
-                  {SOCIALS.map((social) => (
-                    <Link
-                      key={social.label}
-                      href={social.href}
-                      target={social.href.startsWith("http") ? "_blank" : undefined}
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2.5 p-3 rounded-xl glass-card glass-card-hover border border-white/[0.06] hover:border-accent/20 text-text-muted hover:text-white transition-all duration-300 text-sm group"
-                    >
-                      <span className="text-base">{social.icon}</span>
-                      <span className="font-medium">{social.label}</span>
-                      <svg
-                        className="w-3 h-3 ml-auto opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Availability indicator */}
-              <div className="glass-card rounded-2xl p-5 border border-green-500/20 bg-green-500/[0.04]">
-                <div className="flex items-center gap-3">
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
-                  <div>
-                    <p className="text-sm font-medium text-white">Available for hire</p>
-                    <p className="text-xs text-text-muted">Open to remote opportunities</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Contact Form */}
-          <Reveal direction="right" className="lg:col-span-3">
-            <form
-              onSubmit={handleSubmit}
-              className="glass-card rounded-2xl p-7 border border-white/[0.06] space-y-5"
-            >
-              <div className="grid sm:grid-cols-2 gap-5">
-                {/* Name */}
-                <div>
-                  <label className="block text-sm font-medium text-text-muted mb-2">
-                    Name <span className="text-accent">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Your full name"
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-text-subtle text-sm focus:outline-none focus:border-accent/50 focus:bg-white/[0.06] transition-all duration-300"
-                  />
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label className="block text-sm font-medium text-text-muted mb-2">
-                    Email <span className="text-accent">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="your@email.com"
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-text-subtle text-sm focus:outline-none focus:border-accent/50 focus:bg-white/[0.06] transition-all duration-300"
-                  />
-                </div>
-              </div>
-
-              {/* Subject */}
-              <div>
-                <label className="block text-sm font-medium text-text-muted mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={form.subject}
-                  onChange={handleChange}
-                  placeholder="Project inquiry, Collaboration, etc."
-                  className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-text-subtle text-sm focus:outline-none focus:border-accent/50 focus:bg-white/[0.06] transition-all duration-300"
-                />
-              </div>
-
-              {/* Message */}
-              <div>
-                <label className="block text-sm font-medium text-text-muted mb-2">
-                  Message <span className="text-accent">*</span>
-                </label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  placeholder="Tell me about your project or opportunity..."
-                  className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-text-subtle text-sm focus:outline-none focus:border-accent/50 focus:bg-white/[0.06] transition-all duration-300 resize-none"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                variant="primary"
-                size="lg"
-                loading={loading}
-                className="w-full"
-              >
-                {loading ? "Sending..." : "Send Message"}
-                {!loading && (
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
-                )}
-              </Button>
-
-              <p className="text-center text-xs text-text-subtle">
-                Your message is stored securely. No spam, ever.
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 border-[2.5px] border-[#0f0f0f] bg-white brutal-shadow">
+          {/* Left Info */}
+          <div className="w-full lg:w-1/3 p-8 border-b-[2.5px] lg:border-b-0 lg:border-r-[2.5px] border-[#0f0f0f] bg-[#f0d43a]">
+            <Reveal delay={0.1}>
+              <p className="font-mono text-sm md:text-base text-[#0f0f0f] leading-relaxed mb-8 font-bold">
+                AVAILABLE FOR FREELANCE OPPORTUNITIES.
+                <br /><br />
+                DON'T HESITATE TO REACH OUT IF YOU HAVE A PROJECT IN MIND.
               </p>
-            </form>
-          </Reveal>
+              
+              <div className="space-y-4 flex flex-col items-start">
+                <Link
+                  href={SOCIAL_LINKS.email}
+                  className="font-mono text-xs uppercase tracking-widest px-4 py-2 border-[2.5px] border-[#0f0f0f] bg-white text-[#0f0f0f] hover:bg-[#0f0f0f] hover:text-white transition-colors cursor-none"
+                >
+                  EMAIL
+                </Link>
+                <Link
+                  href={SOCIAL_LINKS.linkedin}
+                  target="_blank"
+                  className="font-mono text-xs uppercase tracking-widest px-4 py-2 border-[2.5px] border-[#0f0f0f] bg-white text-[#0f0f0f] hover:bg-[#0f0f0f] hover:text-white transition-colors cursor-none"
+                >
+                  LINKEDIN
+                </Link>
+                <Link
+                  href={SOCIAL_LINKS.github}
+                  target="_blank"
+                  className="font-mono text-xs uppercase tracking-widest px-4 py-2 border-[2.5px] border-[#0f0f0f] bg-white text-[#0f0f0f] hover:bg-[#0f0f0f] hover:text-white transition-colors cursor-none"
+                >
+                  GITHUB
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Right Form */}
+          <div className="w-full lg:w-2/3 p-8 bg-[#f5f0e8]">
+            <Reveal delay={0.2} className="h-full">
+              <form onSubmit={handleSubmit} className="flex flex-col h-full gap-6">
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div className="flex-1 flex flex-col">
+                    <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2">
+                      NAME *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors rounded-none cursor-none"
+                    />
+                  </div>
+                  <div className="flex-1 flex flex-col">
+                    <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2">
+                      EMAIL *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors rounded-none cursor-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex-1 flex flex-col">
+                  <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2">
+                    MESSAGE *
+                  </label>
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    required
+                    rows={4}
+                    className="w-full flex-1 px-4 py-3 bg-transparent border-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors resize-none rounded-none cursor-none"
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  variant="primary"
+                  loading={loading}
+                  className="self-end"
+                >
+                  {loading ? "SENDING..." : "SUBMIT"}
+                </Button>
+              </form>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

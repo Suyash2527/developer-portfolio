@@ -1,144 +1,74 @@
 "use client";
 
+import { Reveal } from "@/components/animations/Reveal";
 import { motion } from "framer-motion";
-import { Reveal, StaggerReveal, revealItem } from "@/components/animations/Reveal";
-
-const STATS = [
-  { label: "Projects Shipped", value: "4+" },
-  { label: "Technologies", value: "12+" },
-  { label: "Cloud Deployments", value: "3+" },
-  { label: "Open Source", value: "Active" },
-];
-
-const HIGHLIGHTS = [
-  {
-    icon: "🏗️",
-    title: "Backend Engineering",
-    description:
-      "Architecting scalable Node.js/Express APIs with MongoDB and Firebase Firestore. Emphasis on performance, security, and maintainability.",
-  },
-  {
-    icon: "☁️",
-    title: "Cloud Infrastructure",
-    description:
-      "Deploying production workloads on GCP Cloud Run with Firebase. Building CI/CD pipelines with GitHub Actions and Docker.",
-  },
-  {
-    icon: "🎨",
-    title: "Frontend Craft",
-    description:
-      "Building pixel-perfect UIs with Next.js, TypeScript, and Tailwind CSS. Obsessed with performance, accessibility, and micro-animations.",
-  },
-  {
-    icon: "🔓",
-    title: "Open Source",
-    description:
-      "Contributing to the developer community through open-source projects, documentation, and sharing engineering knowledge publicly.",
-  },
-];
 
 export default function AboutSection() {
   return (
-    <section id="about" className="section-padding relative">
-      {/* Subtle orb */}
-      <div className="orb w-96 h-96 bg-accent/10 top-1/2 right-0 translate-x-1/2 -translate-y-1/2" />
+    <section id="about" className="py-24 md:py-32 relative border-b-[2.5px] border-[#0f0f0f] bg-[#f5f0e8] overflow-hidden">
+      {/* Giant faded number background */}
+      <div className="absolute top-0 right-0 font-heading text-[clamp(120px,25vw,300px)] text-[#0f0f0f] opacity-[0.03] leading-none select-none pointer-events-none">
+        01
+      </div>
 
-      <div className="container-max relative">
-        {/* Header */}
+      <div className="container-max px-6 md:px-10 relative z-10">
         <Reveal>
-          <div className="text-center mb-16 lg:mb-20">
-            <span className="section-label mb-4 block">About Me</span>
-            <h2 className="text-section-title font-black text-white mb-5">
-              Building{" "}
-              <span className="text-gradient-accent">full-stack</span>{" "}
-              solutions
-              <br className="hidden sm:block" /> from idea to production.
-            </h2>
-            <p className="text-text-muted text-lg max-w-2xl mx-auto leading-relaxed font-light">
-              A full-stack developer with a passion for engineering elegant, scalable software.
-              I specialize in backend systems, cloud architecture, and modern frontend experiences.
-            </p>
-          </div>
+          <h2 className="font-heading text-section-title leading-[0.95] tracking-[-0.02em] uppercase text-[#0f0f0f] mb-12">
+            The <span className="text-[#dd4433]">Architect.</span>
+          </h2>
         </Reveal>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
-          {/* Left: Bio */}
-          <Reveal direction="left">
-            <div className="space-y-5">
-              <p className="text-text-muted leading-relaxed">
-                I&apos;m a full-stack developer focused on building{" "}
-                <span className="text-white font-medium">production-grade web applications</span>{" "}
-                that solve real problems. My experience spans from crafting delightful frontend
-                interfaces to designing robust backend APIs and cloud deployments.
-              </p>
-              <p className="text-text-muted leading-relaxed">
-                I&apos;ve built e-commerce platforms, AI-powered assistants, logistics dashboards,
-                and hospital management systems — each deployed to production with{" "}
-                <span className="text-white font-medium">GCP and Firebase</span>. I care deeply about
-                code quality, developer experience, and shipping products that users love.
-              </p>
-              <p className="text-text-muted leading-relaxed">
-                When I&apos;m not coding, I&apos;m exploring new technologies, contributing to open-source,
-                and staying current with the latest in cloud-native development and AI tooling.
-              </p>
-
-              {/* Tech stack pill list */}
-              <div className="flex flex-wrap gap-2 pt-2">
-                {["Next.js 15", "TypeScript", "Node.js", "Firebase", "GCP", "MongoDB", "Docker"].map(
-                  (tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 rounded-full text-xs font-medium glass-card border border-accent/20 text-accent-light"
-                    >
-                      {tech}
-                    </span>
-                  )
-                )}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
+          {/* Left Column: Image/Visual */}
+          <Reveal className="w-full lg:w-5/12 flex-shrink-0" direction="up">
+            <div className="w-full aspect-[4/5] border-[2.5px] border-[#0f0f0f] bg-[#0f0f0f] relative overflow-hidden group brutal-shadow hover:translate-x-[-4px] hover:translate-y-[-4px] transition-transform duration-200">
+              {/* Halftone pattern / placeholder */}
+              <div className="absolute inset-0 opacity-[0.1] bg-graph-paper" />
+              <div className="absolute inset-0 flex items-center justify-center p-8 group-hover:scale-105 transition-transform duration-500">
+                <span className="font-heading text-[60px] md:text-[80px] text-white/20 uppercase break-all leading-[0.8] text-center mix-blend-overlay">
+                  YOUR
+                  <br />
+                  PHOTO
+                  <br />
+                  HERE
+                </span>
+              </div>
+              <div className="absolute bottom-4 left-4 border-[2px] border-white/50 bg-[#0f0f0f] px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-white/80">
+                FIG. 1
               </div>
             </div>
           </Reveal>
 
-          {/* Right: Stats */}
-          <Reveal direction="right">
-            <div className="grid grid-cols-2 gap-4">
-              {STATS.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  whileHover={{ scale: 1.03, y: -2 }}
-                  className="glass-card rounded-2xl p-6 border border-white/[0.06] hover:border-accent/20 transition-all duration-300 text-center"
-                >
-                  <p
-                    className="text-4xl font-black text-gradient-accent mb-1"
-                    style={{ letterSpacing: "-0.03em" }}
-                  >
-                    {stat.value}
-                  </p>
-                  <p className="text-xs text-text-muted font-medium uppercase tracking-wide">
-                    {stat.label}
-                  </p>
-                </motion.div>
-              ))}
+          {/* Right Column: Editorial Text */}
+          <Reveal className="w-full lg:w-7/12 flex flex-col justify-center" direction="up" delay={0.2}>
+            <div className="space-y-6">
+              <p className="font-mono text-base md:text-lg text-[#0f0f0f] leading-[1.8]">
+                I design and develop digital products from the ground up. Not just writing code — <strong className="font-bold bg-[#dd4433] text-white px-1">engineering experiences</strong> that load fast, scale gracefully, and look incredible.
+              </p>
+              
+              <p className="font-mono text-sm md:text-base text-[#888888] leading-[1.8]">
+                My background spans deep backend architecture to pixel-perfect frontend execution. Whether it&apos;s a high-performance Next.js interface or a robust Node/Firebase backend, I focus on shipping production-grade solutions that solve real problems.
+              </p>
+
+              <p className="font-mono text-sm md:text-base text-[#888888] leading-[1.8]">
+                No templates. No bloated libraries. Just raw code and intentional design.
+              </p>
+
+              <div className="pt-8 border-t-[2.5px] border-[#0f0f0f] mt-8 flex flex-wrap gap-4">
+                {[
+                  "System Architecture",
+                  "UI/UX Design",
+                  "Performance Tuning",
+                  "Cloud Deployment"
+                ].map((tag) => (
+                  <span key={tag} className="font-mono text-[10px] uppercase tracking-widest border-[1.5px] border-[#0f0f0f] px-3 py-1.5 text-[#0f0f0f]">
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           </Reveal>
         </div>
-
-        {/* Highlights Grid */}
-        <StaggerReveal className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {HIGHLIGHTS.map((item) => (
-            <motion.div
-              key={item.title}
-              variants={revealItem}
-              whileHover={{ y: -6, scale: 1.02 }}
-              className="glass-card rounded-2xl p-6 border border-white/[0.06] hover:border-accent/20 transition-all duration-300 group"
-            >
-              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
-                {item.icon}
-              </div>
-              <h3 className="text-base font-semibold text-white mb-2">{item.title}</h3>
-              <p className="text-sm text-text-muted leading-relaxed">{item.description}</p>
-            </motion.div>
-          ))}
-        </StaggerReveal>
       </div>
     </section>
   );

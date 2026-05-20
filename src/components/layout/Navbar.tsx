@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "@/components/ui/ThemeProvider";
-import { SOCIAL_LINKS } from "@/data/portfolio";
 import { cn } from "@/utils";
 
 const NAV_ITEMS = [
@@ -19,15 +17,10 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("hero");
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
-  // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-
       const sections = NAV_ITEMS.map((item) => item.href.replace("#", ""));
       for (const section of sections.reverse()) {
         const el = document.getElementById(section);
@@ -56,102 +49,72 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-          scrolled
-            ? "py-3 bg-black/60 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_4px_32px_rgba(0,0,0,0.4)]"
-            : "py-5 bg-transparent"
-        )}
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 h-16 bg-[#f5f0e8] border-b-[2.5px] border-[#0f0f0f]"
       >
-        <div className="container-max px-6 flex items-center justify-between">
-          {/* Logo */}
-          <button
-            onClick={() => scrollTo("#hero")}
-            className="font-bold text-xl tracking-tight hover:opacity-80 transition-opacity"
-          >
-            <span className="text-gradient-accent">{"<"}</span>
-            <span className="text-white">Dev</span>
-            <span className="text-gradient-accent">{"/>"}</span>
-          </button>
+        {/* Logo */}
+        <button
+          onClick={() => scrollTo("#hero")}
+          className="font-heading text-2xl tracking-tight text-[#0f0f0f] uppercase cursor-none"
+        >
+          YN.
+        </button>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
-            {NAV_ITEMS.map((item) => {
-              const isActive = activeSection === item.href.replace("#", "");
-              return (
-                <button
-                  key={item.href}
-                  onClick={() => scrollTo(item.href)}
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {NAV_ITEMS.map((item) => {
+            const isActive = activeSection === item.href.replace("#", "");
+            return (
+              <button
+                key={item.href}
+                onClick={() => scrollTo(item.href)}
+                className={cn(
+                  "relative font-mono text-[11px] uppercase tracking-[0.12em] text-[#0f0f0f] pb-1 cursor-none overflow-hidden group",
+                  isActive ? "text-[#0f0f0f]" : "text-[#888888] hover:text-[#0f0f0f]"
+                )}
+              >
+                {item.label}
+                <span 
                   className={cn(
-                    "relative px-4 py-2 text-sm rounded-lg transition-all duration-300",
-                    isActive
-                      ? "text-white"
-                      : "text-text-muted hover:text-white"
-                  )}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-active"
-                      className="absolute inset-0 rounded-lg bg-white/[0.08] border border-white/[0.10]"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                    />
-                  )}
-                  <span className="relative z-10">{item.label}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right controls */}
-          <div className="hidden md:flex items-center gap-3">
-            {/* Theme toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg text-text-muted hover:text-white hover:bg-white/[0.06] transition-all duration-300"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-              )}
-            </button>
-
-            {/* Admin link */}
-            <Link
-              href="/admin"
-              className="px-4 py-2 text-sm rounded-xl outline-button text-white/70 hover:text-white"
-            >
-              Admin
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden p-2 text-text-muted hover:text-white transition-colors"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            <div className="w-5 h-5 flex flex-col justify-center gap-1.5">
-              <motion.span
-                animate={mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-                className="block h-px bg-current origin-center"
-              />
-              <motion.span
-                animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-                className="block h-px bg-current"
-              />
-              <motion.span
-                animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-                className="block h-px bg-current origin-center"
-              />
-            </div>
-          </button>
+                    "absolute bottom-0 left-0 w-full h-[2px] bg-[#dd4433] origin-left transition-transform duration-300 ease-[cubic-bezier(0.77,0,0.175,1)]",
+                    isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  )} 
+                />
+              </button>
+            );
+          })}
         </div>
+
+        {/* Right controls */}
+        <div className="hidden md:flex items-center gap-4">
+          <Link
+            href="/admin"
+            className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#0f0f0f] border-[2px] border-[#0f0f0f] px-3 py-1 cursor-none hover:bg-[#0f0f0f] hover:text-white transition-colors"
+          >
+            Admin
+          </Link>
+        </div>
+
+        {/* Mobile menu button */}
+        <button
+          className="md:hidden text-[#0f0f0f] cursor-none"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+        >
+          <div className="w-5 h-5 flex flex-col justify-center gap-1.5">
+            <motion.span
+              animate={mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+              className="block h-[2.5px] bg-current origin-center"
+            />
+            <motion.span
+              animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
+              className="block h-[2.5px] bg-current"
+            />
+            <motion.span
+              animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+              className="block h-[2.5px] bg-current origin-center"
+            />
+          </div>
+        </button>
       </motion.nav>
 
       {/* Mobile menu */}
@@ -162,7 +125,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed top-16 left-4 right-4 z-50 rounded-2xl bg-black/90 backdrop-blur-2xl border border-white/[0.08] shadow-glass-lg p-4 flex flex-col gap-1"
+            className="fixed top-16 left-0 right-0 z-40 bg-[#f5f0e8] border-b-[2.5px] border-[#0f0f0f] p-6 flex flex-col gap-4"
           >
             {NAV_ITEMS.map((item, i) => (
               <motion.button
@@ -172,30 +135,22 @@ export default function Navbar() {
                 transition={{ delay: i * 0.04 }}
                 onClick={() => scrollTo(item.href)}
                 className={cn(
-                  "text-left px-4 py-3 rounded-xl text-sm transition-all duration-200",
+                  "text-left font-mono text-sm uppercase tracking-widest pb-2 border-b-[1.5px] cursor-none",
                   activeSection === item.href.replace("#", "")
-                    ? "bg-accent/20 text-white border border-accent/20"
-                    : "text-text-muted hover:text-white hover:bg-white/[0.06]"
+                    ? "text-[#dd4433] border-[#dd4433]"
+                    : "text-[#0f0f0f] border-transparent"
                 )}
               >
                 {item.label}
               </motion.button>
             ))}
-            <div className="mt-2 pt-2 border-t border-white/[0.06] flex gap-2">
-              <button
-                onClick={toggleTheme}
-                className="flex-1 py-2.5 rounded-xl outline-button text-sm text-white/70 hover:text-white text-center"
-              >
-                {theme === "dark" ? "Light Mode" : "Dark Mode"}
-              </button>
-              <Link
-                href="/admin"
-                className="flex-1 py-2.5 rounded-xl outline-button text-sm text-white/70 hover:text-white text-center"
-                onClick={() => setMobileOpen(false)}
-              >
-                Admin
-              </Link>
-            </div>
+            <Link
+              href="/admin"
+              className="mt-4 w-full text-center font-mono text-sm uppercase tracking-widest text-white bg-[#0f0f0f] py-3 cursor-none border-[2.5px] border-[#0f0f0f]"
+              onClick={() => setMobileOpen(false)}
+            >
+              Admin Access
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

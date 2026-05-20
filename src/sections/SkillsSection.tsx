@@ -1,120 +1,67 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Reveal, StaggerReveal, revealItem } from "@/components/animations/Reveal";
+import { motion } from "framer-motion";
 
-// Skill icons using SVG inline or react-icons style text badges
 const SKILLS = [
-  { name: "React", category: "Frontend", color: "#61DAFB", icon: "⚛️", size: "large" },
-  { name: "Next.js", category: "Framework", color: "#fff", icon: "▲", size: "large" },
-  { name: "TypeScript", category: "Language", color: "#3178C6", icon: "TS", size: "large" },
-  { name: "Node.js", category: "Backend", color: "#339933", icon: "🟢", size: "medium" },
-  { name: "Express.js", category: "Backend", color: "#fff", icon: "Ex", size: "medium" },
-  { name: "MongoDB", category: "Database", color: "#47A248", icon: "🍃", size: "medium" },
-  { name: "Firebase", category: "Cloud", color: "#FFCA28", icon: "🔥", size: "medium" },
-  { name: "Google Cloud", category: "Cloud", color: "#4285F4", icon: "☁️", size: "medium" },
-  { name: "Tailwind CSS", category: "Styling", color: "#06B6D4", icon: "🌊", size: "small" },
-  { name: "Docker", category: "DevOps", color: "#2496ED", icon: "🐳", size: "small" },
-  { name: "GitHub Actions", category: "CI/CD", color: "#fff", icon: "⚙️", size: "small" },
-  { name: "REST APIs", category: "Backend", color: "#7C3AED", icon: "🔌", size: "small" },
+  { name: "React", category: "Frontend", level: "Expert" },
+  { name: "Next.js", category: "Framework", level: "Expert" },
+  { name: "TypeScript", category: "Language", level: "Advanced" },
+  { name: "Node.js", category: "Backend", level: "Advanced" },
+  { name: "Express.js", category: "Backend", level: "Advanced" },
+  { name: "MongoDB", category: "Database", level: "Intermediate" },
+  { name: "Firebase", category: "Cloud", level: "Intermediate" },
+  { name: "Google Cloud", category: "Cloud", level: "Intermediate" },
+  { name: "Tailwind CSS", category: "Styling", level: "Expert" },
+  { name: "Docker", category: "DevOps", level: "Intermediate" },
+  { name: "GitHub Actions", category: "CI/CD", level: "Intermediate" },
+  { name: "REST APIs", category: "Backend", level: "Advanced" },
 ];
-
-const CATEGORY_COLORS: Record<string, string> = {
-  Frontend: "rgba(97, 218, 251, 0.12)",
-  Framework: "rgba(255,255,255,0.08)",
-  Language: "rgba(49, 120, 198, 0.15)",
-  Backend: "rgba(51, 153, 51, 0.12)",
-  Database: "rgba(71, 162, 72, 0.12)",
-  Cloud: "rgba(66, 133, 244, 0.12)",
-  Styling: "rgba(6, 182, 212, 0.12)",
-  DevOps: "rgba(36, 150, 237, 0.12)",
-  "CI/CD": "rgba(255,255,255,0.06)",
-};
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="section-padding relative bg-background-secondary">
-      <div className="orb w-80 h-80 bg-accent/10 bottom-0 left-1/4" />
+    <section id="skills" className="py-24 md:py-32 relative border-b-[2.5px] border-[#0f0f0f] bg-[#f0d43a]">
+      {/* Giant faded number background */}
+      <div className="absolute top-0 right-0 font-heading text-[clamp(120px,25vw,300px)] text-[#0f0f0f] opacity-[0.04] leading-none select-none pointer-events-none">
+        02
+      </div>
 
-      <div className="container-max relative">
-        {/* Header */}
-        <Reveal className="text-center mb-16">
-          <span className="section-label mb-4 block">Tech Stack</span>
-          <h2 className="text-section-title font-black text-white mb-5">
-            Tools I{" "}
-            <span className="text-gradient-accent">build with</span>
+      <div className="container-max px-6 md:px-10 relative z-10">
+        <Reveal>
+          <h2 className="font-heading text-section-title leading-[0.95] tracking-[-0.02em] uppercase text-[#0f0f0f] mb-12">
+            Skills <span className="text-white mix-blend-difference">Matrix.</span>
           </h2>
-          <p className="text-text-muted text-lg max-w-xl mx-auto leading-relaxed font-light">
-            A curated toolkit of modern technologies I use daily to craft
-            high-performance, scalable applications.
-          </p>
         </Reveal>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-auto">
-          {/* Featured large card — React */}
-          <StaggerReveal className="contents">
-            {SKILLS.map((skill, i) => (
-              <motion.div
-                key={skill.name}
-                variants={revealItem}
-                whileHover={{
-                  scale: 1.04,
-                  y: -6,
-                  boxShadow: `0 20px 60px rgba(0,0,0,0.4), 0 0 30px ${skill.color}22`,
-                }}
-                className={`relative glass-card rounded-2xl p-5 border border-white/[0.06] hover:border-white/[0.12]
-                  transition-all duration-300 group cursor-default overflow-hidden
-                  ${skill.size === "large" ? "col-span-1 row-span-1 sm:col-span-1" : ""}`}
-                style={{ background: CATEGORY_COLORS[skill.category] || "rgba(255,255,255,0.03)" }}
-              >
-                {/* Glow on hover */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: `radial-gradient(circle at 50% 0%, ${skill.color}18 0%, transparent 60%)`,
-                  }}
-                />
-
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300 inline-block">
-                    {skill.icon}
-                  </div>
-
-                  {/* Name */}
-                  <h3 className="font-semibold text-white text-sm leading-tight mb-1">
-                    {skill.name}
-                  </h3>
-
-                  {/* Category pill */}
-                  <span
-                    className="text-[10px] font-medium px-2 py-0.5 rounded-full"
-                    style={{
-                      background: `${skill.color}22`,
-                      color: skill.color === "#fff" ? "#a1a1aa" : skill.color,
-                      border: `1px solid ${skill.color}33`,
-                    }}
-                  >
-                    {skill.category}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </StaggerReveal>
-        </div>
-
-        {/* Bottom banner */}
-        <Reveal className="mt-12">
-          <div className="glass-card rounded-2xl p-6 border border-accent/10 text-center">
-            <p className="text-text-muted text-sm leading-relaxed max-w-2xl mx-auto">
-              Always learning. Currently exploring{" "}
-              <span className="text-white font-medium">Rust</span>,{" "}
-              <span className="text-white font-medium">tRPC</span>, and{" "}
-              <span className="text-white font-medium">Edge computing</span> patterns.
-            </p>
+        <StaggerReveal className="w-full border-[2.5px] border-[#0f0f0f] bg-[#f5f0e8] flex flex-col brutal-shadow">
+          {/* Header row */}
+          <div className="flex border-b-[2.5px] border-[#0f0f0f] bg-[#0f0f0f] text-[#f5f0e8]">
+            <div className="w-[45%] md:w-[40%] p-4 md:p-5 font-mono text-[11px] md:text-[13px] uppercase tracking-widest border-r-[2.5px] border-[#0f0f0f]">Technology</div>
+            <div className="w-[30%] md:w-[40%] p-4 md:p-5 font-mono text-[11px] md:text-[13px] uppercase tracking-widest border-r-[2.5px] border-[#0f0f0f]">Domain</div>
+            <div className="w-[25%] md:w-[20%] p-4 md:p-5 font-mono text-[11px] md:text-[13px] uppercase tracking-widest text-center">Level</div>
           </div>
-        </Reveal>
+
+          {/* Data rows */}
+          {SKILLS.map((skill, i) => (
+            <motion.div
+              key={skill.name}
+              variants={revealItem}
+              className={`flex transition-colors duration-200 hover:bg-[#0f0f0f] hover:text-[#f5f0e8] group ${
+                i !== SKILLS.length - 1 ? "border-b-[2.5px] border-[#0f0f0f]" : ""
+              }`}
+            >
+              <div className="w-[45%] md:w-[40%] p-4 md:p-5 font-heading text-xl md:text-2xl uppercase border-r-[2.5px] border-[#0f0f0f] flex items-center group-hover:border-[#f5f0e8]">
+                {skill.name}
+              </div>
+              <div className="w-[30%] md:w-[40%] p-4 md:p-5 font-mono text-[11px] md:text-[13px] uppercase tracking-widest border-r-[2.5px] border-[#0f0f0f] flex items-center group-hover:border-[#f5f0e8]">
+                {skill.category}
+              </div>
+              <div className="w-[25%] md:w-[20%] p-4 md:p-5 font-mono text-[10px] md:text-[12px] uppercase tracking-widest flex items-center justify-center text-center">
+                {skill.level}
+              </div>
+            </motion.div>
+          ))}
+        </StaggerReveal>
       </div>
     </section>
   );
