@@ -223,81 +223,69 @@ export default function ContactSection() {
                   initial={{ opacity: 0, x: 40 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="p-8 h-full min-h-[400px] flex flex-col items-center justify-center gap-8"
+                  transition={{ duration: 0.3 }}
+                  className="p-8 h-full min-h-[400px] flex flex-col justify-center bg-[#0f0f0f] text-[#f5f0e8]"
                 >
-                  {/* Flying paper plane */}
-                  <div className="relative w-full flex justify-center items-center h-32">
-                    {/* Dotted flight path */}
-                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 120" fill="none">
-                      <motion.path
-                        d="M 20 90 Q 200 20 380 10"
-                        stroke="#0f0f0f"
-                        strokeWidth="1.5"
-                        strokeDasharray="6 4"
-                        strokeOpacity="0.2"
-                        fill="none"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 2, ease: "easeInOut" }}
+                  <div className="max-w-md mx-auto w-full">
+                    {/* Blinking Header */}
+                    <div className="flex items-center gap-4 mb-10">
+                      <motion.div 
+                        animate={{ opacity: [1, 0] }} 
+                        transition={{ duration: 0.4, repeat: Infinity, ease: "steps(2)" }}
+                        className="w-6 h-10 bg-[#dd4433]"
                       />
-                    </svg>
-
-                    {/* Paper plane icon */}
-                    <motion.div
-                      className="text-5xl select-none z-10"
-                      initial={{ x: -160, y: 40, rotate: -10, opacity: 0 }}
-                      animate={{ x: 160, y: -30, rotate: 15, opacity: [0, 1, 1, 0] }}
-                      transition={{ duration: 2.2, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }}
-                    >
-                      ✈
-                    </motion.div>
-
-                    {/* Speed lines */}
-                    {[0, 1, 2].map((i) => (
-                      <motion.div
-                        key={i}
-                        className="absolute left-[20%] h-[1.5px] bg-[#dd4433]"
-                        style={{ top: `${45 + i * 12}%`, width: `${30 + i * 10}px` }}
-                        initial={{ scaleX: 0, opacity: 0 }}
-                        animate={{ scaleX: [0, 1, 0], opacity: [0, 0.6, 0] }}
-                        transition={{ duration: 0.8, delay: i * 0.15, repeat: Infinity, repeatDelay: 1.4 }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Status text with blinking cursor */}
-                  <div className="text-center">
-                    <motion.p
-                      className="font-heading text-3xl uppercase text-[#0f0f0f] mb-2"
-                      animate={{ opacity: [1, 0.5, 1] }}
-                      transition={{ duration: 1.2, repeat: Infinity }}
-                    >
-                      TRANSMITTING
-                    </motion.p>
-                    <p className="font-mono text-xs uppercase tracking-widest text-[#888888]">
-                      Sending your message to the destination
-                    </p>
-                  </div>
-
-                  {/* Progress bar */}
-                  <div className="w-full max-w-xs">
-                    <div className="flex justify-between mb-1">
-                      <span className="font-mono text-[9px] uppercase tracking-widest text-[#888888]">Progress</span>
-                      <span className="font-mono text-[9px] uppercase tracking-widest text-[#0f0f0f]">{Math.round(progress)}%</span>
+                      <h3 className="font-heading text-4xl uppercase tracking-widest text-white">
+                        TRANSMITTING
+                      </h3>
                     </div>
-                    <div className="w-full h-[4px] bg-[#0f0f0f]/10 border border-[#0f0f0f]">
-                      <motion.div
-                        className="h-full bg-[#dd4433]"
-                        style={{ width: `${progress}%` }}
-                        transition={{ duration: 0.3 }}
-                      />
+
+                    {/* Fake Terminal Logs */}
+                    <div className="font-mono text-xs uppercase tracking-widest text-[#888888] space-y-3 mb-12">
+                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }}>
+                        &gt; INITIATING SECURE HANDSHAKE... <span className="text-[#15a315]">OK</span>
+                      </motion.p>
+                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+                        &gt; ENCRYPTING PAYLOAD... <span className="text-[#15a315]">OK</span>
+                      </motion.p>
+                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}>
+                        &gt; ESTABLISHING UPLINK TO SERVER...
+                      </motion.p>
+                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="text-[#dd4433] animate-pulse">
+                        &gt; TRANSMITTING DATA PACKETS
+                      </motion.p>
                     </div>
-                    {/* Tick marks */}
-                    <div className="flex justify-between mt-1">
-                      {[0, 25, 50, 75, 100].map((tick) => (
-                        <span key={tick} className="font-mono text-[8px] text-[#888888]">{tick}</span>
-                      ))}
+
+                    {/* Brutalist Progress Bar */}
+                    <div className="w-full">
+                      <div className="flex justify-between mb-3">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#888888]">
+                          UPLINK STATUS
+                        </span>
+                        <span className="font-mono text-[12px] text-white">
+                          [{Math.round(progress)}%]
+                        </span>
+                      </div>
+                      
+                      {/* Heavy blocky progress container */}
+                      <div className="w-full h-[36px] border-[2.5px] border-[#333333] p-1 flex">
+                        <motion.div
+                          className="h-full bg-[#dd4433]"
+                          style={{ width: `${progress}%` }}
+                          transition={{ duration: 0.1 }}
+                        />
+                      </div>
+                      
+                      {/* Decorative hexadecimal data stream */}
+                      <div className="mt-4 overflow-hidden h-[15px] opacity-40">
+                        <motion.p 
+                          className="font-mono text-[10px] text-[#888888] whitespace-nowrap break-all"
+                          animate={{ x: [0, -300] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        >
+                          0x4F 0x6E 0x20 0x61 0x72 0x63 0x68 0x69 0x74 0x65 0x63 0x74 0x75 0x72 0x65 0x20 0x6F 0x66 0x20 0x74 0x68 0x65 0x20 0x75 0x6E 0x69 0x76 0x65 0x72 0x73 0x65 0x2E 0x2E 0x2E
+                          0x4F 0x6E 0x20 0x61 0x72 0x63 0x68 0x69 0x74 0x65 0x63 0x74 0x75 0x72 0x65 0x20 0x6F 0x66 0x20 0x74 0x68 0x65 0x20 0x75 0x6E 0x69 0x76 0x65 0x72 0x73 0x65 0x2E 0x2E 0x2E
+                        </motion.p>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
