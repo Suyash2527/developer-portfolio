@@ -3,6 +3,7 @@ import { Anton, Space_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { Toaster } from "react-hot-toast";
+import { CustomCursor } from "@/components/animations/CustomCursor";
 
 const anton = Anton({
   weight: "400",
@@ -34,6 +35,7 @@ export default function RootLayout({
       <body className={`${anton.variable} ${spaceMono.variable} font-mono bg-[#f5f0e8] text-[#0f0f0f] antialiased`}>
         <div className="page-loader" />
         <div className="noise-overlay" />
+        <CustomCursor />
         <ThemeProvider>
           {children}
           <Toaster
