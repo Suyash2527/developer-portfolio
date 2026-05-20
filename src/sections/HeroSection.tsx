@@ -35,11 +35,11 @@ export default function HeroSection() {
             ))}
           </span>
 
-          {/* Glitch layers visible on hover */}
-          <span className="absolute top-0 left-0 font-heading text-hero-xl leading-[0.9] tracking-[-0.02em] pointer-events-none whitespace-nowrap opacity-0 group-hover:opacity-65 group-hover:text-[#dd4433] z-20 mix-blend-multiply group-hover:animate-[glR_0.28s_steps(2)_infinite]">
+          {/* Glitch layers visible permanently */}
+          <span className="absolute top-0 left-0 font-heading text-hero-xl leading-[0.9] tracking-[-0.02em] pointer-events-none whitespace-nowrap opacity-65 text-[#dd4433] z-20 mix-blend-multiply animate-[glR_0.28s_steps(2)_infinite]">
             {name}
           </span>
-          <span className="absolute top-0 left-0 font-heading text-hero-xl leading-[0.9] tracking-[-0.02em] pointer-events-none whitespace-nowrap opacity-0 group-hover:opacity-55 group-hover:text-[#3344cc] z-20 mix-blend-multiply group-hover:animate-[glB_0.28s_steps(2)_infinite]">
+          <span className="absolute top-0 left-0 font-heading text-hero-xl leading-[0.9] tracking-[-0.02em] pointer-events-none whitespace-nowrap opacity-55 text-[#3344cc] z-20 mix-blend-multiply animate-[glB_0.28s_steps(2)_infinite]">
             {name}
           </span>
           

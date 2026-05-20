@@ -91,7 +91,18 @@ export default function ContactSection() {
           </div>
         </Reveal>
 
-        <div className="flex flex-col lg:flex-row gap-0 border-[2.5px] border-[#0f0f0f] brutal-shadow">
+        <motion.div
+          animate={formState === "success" ? { 
+            x: [0, -15, 15, -10, 10, -5, 5, 0], 
+            y: [0, 10, -10, 8, -8, 4, -4, 0] 
+          } : {}}
+          transition={{ 
+            duration: 0.5, 
+            delay: 0.15, // Sync exactly with the rubber stamp hit
+            ease: "easeInOut" 
+          }}
+          className="flex flex-col lg:flex-row gap-0 border-[2.5px] border-[#0f0f0f] brutal-shadow"
+        >
 
           {/* Left Info Panel */}
           <div className="w-full lg:w-1/3 p-8 border-b-[2.5px] lg:border-b-0 lg:border-r-[2.5px] border-[#0f0f0f] bg-[#f0d43a] flex flex-col justify-between">
@@ -363,7 +374,7 @@ export default function ContactSection() {
               )}
             </AnimatePresence>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
