@@ -230,8 +230,8 @@ export default function ContactSection() {
                     {/* Blinking Header */}
                     <div className="flex items-center gap-4 mb-10">
                       <motion.div 
-                        animate={{ opacity: [1, 0] }} 
-                        transition={{ duration: 0.4, repeat: Infinity, ease: "steps(2)" }}
+                        animate={{ opacity: [1, 1, 0, 0] }} 
+                        transition={{ duration: 0.8, repeat: Infinity, times: [0, 0.5, 0.5, 1], ease: "linear" }}
                         className="w-6 h-10 bg-[#dd4433]"
                       />
                       <h3 className="font-heading text-4xl uppercase tracking-widest text-white">
