@@ -49,7 +49,18 @@ export default function ContactSection() {
     }, 180);
 
     try {
+      // 1. Save to Firebase
       await submitContact(form);
+      
+      // 2. Trigger the automated email via our new Next.js API route
+      // We don't await this because we don't want to block the success UI
+      // if the email takes a second to send or fails.
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      }).catch(err => console.error("Failed to send automated email:", err));
+
       // Finish bar to 100%
       clearInterval(progressRef.current!);
       setProgress(100);
@@ -162,6 +173,7 @@ export default function ContactSection() {
                       <div className="flex-1 flex flex-col">
                         <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2">NAME *</label>
                         <input
+                          suppressHydrationWarning
                           type="text" name="name" value={form.name}
                           onChange={handleChange} required
                           placeholder="John Doe"
@@ -171,6 +183,7 @@ export default function ContactSection() {
                       <div className="flex-1 flex flex-col">
                         <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2">EMAIL *</label>
                         <input
+                          suppressHydrationWarning
                           type="email" name="email" value={form.email}
                           onChange={handleChange} required
                           placeholder="john@example.com"
@@ -182,6 +195,7 @@ export default function ContactSection() {
                     <div className="flex flex-col">
                       <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2">SUBJECT</label>
                       <input
+                        suppressHydrationWarning
                         type="text" name="subject" value={form.subject}
                         onChange={handleChange}
                         className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors rounded-none cursor-none"
@@ -191,6 +205,7 @@ export default function ContactSection() {
                     <div className="flex flex-col">
                       <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2">MESSAGE *</label>
                       <textarea
+                        suppressHydrationWarning
                         name="message" value={form.message}
                         onChange={handleChange} required rows={5}
                         placeholder="Hi, I'd love to work with you on..."
@@ -203,6 +218,7 @@ export default function ContactSection() {
                         * Required fields
                       </p>
                       <button
+                        suppressHydrationWarning
                         type="submit"
                         className="group relative font-mono text-sm uppercase tracking-widest font-bold px-8 py-4 border-[2.5px] border-[#0f0f0f] bg-[#0f0f0f] text-white hover:bg-[#dd4433] hover:border-[#dd4433] transition-all duration-300 cursor-none overflow-hidden"
                       >
@@ -350,6 +366,7 @@ export default function ContactSection() {
                   </motion.div>
 
                   <motion.button
+                    suppressHydrationWarning
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}

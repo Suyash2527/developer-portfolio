@@ -55,6 +55,7 @@ export default function ProjectsSection() {
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
+              suppressHydrationWarning
               onClick={() => setActiveCategory(cat)}
               className={`font-mono text-xs uppercase tracking-[0.1em] px-4 py-2 border-[2px] transition-colors duration-200 cursor-none ${
                 activeCategory === cat

@@ -53,6 +53,7 @@ export default function Navbar() {
       >
         {/* Logo */}
         <button
+          suppressHydrationWarning
           onClick={() => scrollTo("#hero")}
           className="font-heading text-2xl tracking-tight text-[#0f0f0f] uppercase cursor-none"
         >
@@ -66,6 +67,7 @@ export default function Navbar() {
             return (
               <button
                 key={item.href}
+                suppressHydrationWarning
                 onClick={() => scrollTo(item.href)}
                 className={cn(
                   "relative font-mono text-[11px] uppercase tracking-[0.12em] text-[#0f0f0f] pb-1 cursor-none overflow-hidden group",
@@ -96,6 +98,7 @@ export default function Navbar() {
 
         {/* Mobile menu button */}
         <button
+          suppressHydrationWarning
           className="md:hidden text-[#0f0f0f] cursor-none"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
@@ -130,6 +133,7 @@ export default function Navbar() {
             {NAV_ITEMS.map((item, i) => (
               <motion.button
                 key={item.href}
+                suppressHydrationWarning
                 initial={{ opacity: 0, x: -16 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.04 }}

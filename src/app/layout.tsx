@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { Toaster } from "react-hot-toast";
 import { CustomCursor } from "@/components/animations/CustomCursor";
+import AgentChat from "@/components/AgentChat";
 
 const anton = Anton({
   weight: "400",
@@ -38,6 +39,7 @@ export default function RootLayout({
         <CustomCursor />
         <ThemeProvider>
           {children}
+          <AgentChat />
           <Toaster
             position="bottom-right"
             toastOptions={{
