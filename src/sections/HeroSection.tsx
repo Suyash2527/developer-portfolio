@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
-  const name = "YOUR NAME";
+  const firstName = "SUYASH";
+  const lastName = "CHAUDHARI";
   
   return (
     <section
@@ -15,34 +16,58 @@ export default function HeroSection() {
         
         {/* Eyebrow */}
         <p className="font-mono text-[12px] text-[#dd4433] tracking-[0.06em] mb-5">
-          // Designer × Developer — Available for work
+          {"// Designer × Developer — Available for work"}
         </p>
 
-        {/* Hero Name with Glitch Hover */}
-        <h1 className="relative inline-block mb-0 group">
-          {/* Main animated letters */}
-          <span className="font-heading text-hero-xl leading-[0.9] tracking-[-0.02em] text-[#0f0f0f] relative z-10 flex flex-wrap">
-            {name.split("").map((char, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 42 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block whitespace-pre"
-              >
-                {char}
-              </motion.span>
-            ))}
-          </span>
-
-          {/* Glitch layers visible permanently */}
-          <span className="absolute top-0 left-0 font-heading text-hero-xl leading-[0.9] tracking-[-0.02em] pointer-events-none whitespace-nowrap opacity-65 text-[#dd4433] z-20 mix-blend-multiply animate-[glR_0.28s_steps(2)_infinite]">
-            {name}
-          </span>
-          <span className="absolute top-0 left-0 font-heading text-hero-xl leading-[0.9] tracking-[-0.02em] pointer-events-none whitespace-nowrap opacity-55 text-[#3344cc] z-20 mix-blend-multiply animate-[glB_0.28s_steps(2)_infinite]">
-            {name}
-          </span>
+        {/* Hero Name */}
+        <h1 className="flex flex-wrap items-center gap-x-[3vw] gap-y-2 mb-0">
           
+          {/* First Name */}
+          <div className="relative inline-block group">
+            <span className="font-heading text-hero-xl leading-[0.9] tracking-[-0.02em] text-[#0f0f0f] relative z-10 flex">
+              {firstName.split("").map((char, i) => (
+                <motion.span
+                  key={`first-${i}`}
+                  initial={{ opacity: 0, y: 42 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                  className="inline-block"
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </span>
+            <span className="absolute top-0 left-0 font-heading text-hero-xl leading-[0.9] tracking-[-0.02em] pointer-events-none whitespace-nowrap opacity-65 text-[#dd4433] z-20 mix-blend-multiply animate-[glR_0.28s_steps(2)_infinite]">
+              {firstName}
+            </span>
+            <span className="absolute top-0 left-0 font-heading text-hero-xl leading-[0.9] tracking-[-0.02em] pointer-events-none whitespace-nowrap opacity-55 text-[#3344cc] z-20 mix-blend-multiply animate-[glB_0.28s_steps(2)_infinite]">
+              {firstName}
+            </span>
+          </div>
+
+          {/* Last Name */}
+          <div className="relative inline-block group">
+            <span className="font-heading text-hero-xl leading-[0.9] tracking-[-0.02em] text-[#0f0f0f] relative z-10 flex">
+              {lastName.split("").map((char, i) => (
+                <motion.span
+                  key={`last-${i}`}
+                  initial={{ opacity: 0, y: 42 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: (firstName.length + i) * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                  className="inline-block"
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </span>
+            <span className="absolute top-0 left-0 font-heading text-hero-xl leading-[0.9] tracking-[-0.02em] pointer-events-none whitespace-nowrap opacity-65 text-[#dd4433] z-20 mix-blend-multiply animate-[glR_0.28s_steps(2)_infinite]">
+              {lastName}
+            </span>
+            <span className="absolute top-0 left-0 font-heading text-hero-xl leading-[0.9] tracking-[-0.02em] pointer-events-none whitespace-nowrap opacity-55 text-[#3344cc] z-20 mix-blend-multiply animate-[glB_0.28s_steps(2)_infinite]">
+              {lastName}
+            </span>
+          </div>
+
           {/* Blinking block cursor */}
           <motion.span
             initial={{ opacity: 0 }}

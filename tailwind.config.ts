@@ -28,6 +28,7 @@ const config: Config = {
         sans: ["var(--font-space-mono)", "monospace"],
         mono: ["var(--font-space-mono)", "monospace"],
         heading: ["var(--font-anton)", "sans-serif"],
+        terminal: ["var(--font-ibm-plex-mono)", "monospace"],
       },
       fontSize: {
         "hero-xl": ["clamp(72px, 12vw, 160px)", { lineHeight: "0.9", letterSpacing: "-0.02em" }],

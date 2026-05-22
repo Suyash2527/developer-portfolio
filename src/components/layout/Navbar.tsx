@@ -57,7 +57,7 @@ export default function Navbar() {
           onClick={() => scrollTo("#hero")}
           className="font-heading text-2xl tracking-tight text-[#0f0f0f] uppercase cursor-none"
         >
-          YN.
+          SUYASH CHAUDHARI
         </button>
 
         {/* Desktop nav */}

@@ -305,7 +305,7 @@ export async function POST(req: Request) {
 
     <p class="body-text">While you wait, take a look at what I've been building:</p>
 
-    <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}" class="cta-btn">→ view portfolio</a>
+    <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://suyash-chaudhari.web.app'}" class="cta-btn">→ view portfolio</a>
 
     <p class="sign-off">
       Talk soon,

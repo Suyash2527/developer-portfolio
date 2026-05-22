@@ -70,12 +70,12 @@ export const STATIC_SKILLS: Skill[] = [
 ];
 
 export const SOCIAL_LINKS = {
-  github: "https://github.com/yourusername",
-  linkedin: "https://linkedin.com/in/yourusername",
+  github: "https://github.com/Suyash2527",
+  linkedin: "https://www.linkedin.com/in/suyash-chaudhari-23768b316",
   twitter: "https://twitter.com/yourusername",
-  email: "mailto:you@example.com",
+  email: "mailto:csuyash2506@gmail.com",
 };
 
 export const RESUME_URL = "/resume.pdf";
 
-export const GITHUB_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "yourusername";
+export const GITHUB_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "Suyash2527";

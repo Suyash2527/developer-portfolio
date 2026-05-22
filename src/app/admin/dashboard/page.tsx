@@ -10,6 +10,7 @@ import {
   getAllBlogPosts, addBlogPost, updateBlogPost, deleteBlogPost,
   getContacts, markContactRead,
 } from "@/services/firebase/firestore";
+import { uploadFile } from "@/services/firebase/storage";
 import { toast } from "react-hot-toast";
 import type { Project, BlogPost, ContactSubmission } from "@/types";
 import { STATIC_PROJECTS } from "@/data/portfolio";
@@ -133,6 +134,7 @@ function ProjectsManager() {
   const [saving, setSaving] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   useEffect(() => {
     getProjects()
@@ -199,6 +201,21 @@ function ProjectsManager() {
     setForm((prev) => ({ ...prev, techStack: val.split(",").map((t) => t.trim()).filter(Boolean) }));
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingImage(true);
+    try {
+      const url = await uploadFile(file, "projects");
+      setForm((prev) => ({ ...prev, imageUrl: url }));
+      toast.success("IMAGE UPLOADED.");
+    } catch {
+      toast.error("UPLOAD FAILED.");
+    } finally {
+      setUploadingImage(false);
+    }
+  };
+
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between pb-4 border-b-[2.5px] border-[#0f0f0f]">
@@ -225,7 +242,6 @@ function ProjectsManager() {
               <div className="grid sm:grid-cols-2 gap-6">
                 {[
                   { label: "TITLE *", name: "title", placeholder: "PROJECT NAME" },
-                  { label: "IMAGE URL", name: "imageUrl", placeholder: "HTTPS://..." },
                   { label: "LIVE URL", name: "liveUrl", placeholder: "HTTPS://..." },
                   { label: "GITHUB URL", name: "githubUrl", placeholder: "HTTPS://GITHUB.COM/..." },
                 ].map((field) => (
@@ -239,6 +255,23 @@ function ProjectsManager() {
                     />
                   </div>
                 ))}
+                <div>
+                  <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2 flex items-center justify-between">
+                    IMAGE UPLOAD
+                    {uploadingImage && <span className="text-[#dd4433]">UPLOADING...</span>}
+                  </label>
+                  <input
+                    type="file" accept="image/*"
+                    onChange={handleImageUpload}
+                    disabled={uploadingImage}
+                    className="w-full px-4 py-2 bg-transparent border-[2.5px] border-[#0f0f0f] font-mono text-sm focus:outline-none focus:border-[#dd4433] rounded-none cursor-pointer file:mr-4 file:py-1 file:px-3 file:border-[2.5px] file:border-[#0f0f0f] file:bg-[#0f0f0f] file:text-white file:cursor-pointer hover:file:bg-[#dd4433]"
+                  />
+                  {form.imageUrl && (
+                    <div className="mt-2 flex items-center gap-2">
+                      <span className="font-mono text-[10px] truncate text-[#888888]">{form.imageUrl}</span>
+                    </div>
+                  )}
+                </div>
               </div>
               <div>
                 <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2 block">DESCRIPTION *</label>
@@ -340,6 +373,7 @@ function BlogManager() {
   const [showForm, setShowForm] = useState(false);
   const [saving, setSaving] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [form, setForm] = useState<Omit<BlogPost, "id">>({
     title: "", slug: "", excerpt: "", content: "", tags: [], published: false, readTime: 5
   });
@@ -395,10 +429,25 @@ function BlogManager() {
   };
 
   const handleEdit = (post: BlogPost) => {
-    setForm({ title: post.title, slug: post.slug, excerpt: post.excerpt, content: post.content, tags: post.tags, published: post.published, readTime: post.readTime });
+    setForm({ title: post.title, slug: post.slug, excerpt: post.excerpt, content: post.content, tags: post.tags, published: post.published, readTime: post.readTime, coverImage: post.coverImage || "" });
     setTagInput(post.tags.join(", "));
     setEditingId(post.id);
     setShowForm(true);
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingImage(true);
+    try {
+      const url = await uploadFile(file, "blogs");
+      setForm((prev) => ({ ...prev, coverImage: url }));
+      toast.success("IMAGE UPLOADED.");
+    } catch {
+      toast.error("UPLOAD FAILED.");
+    } finally {
+      setUploadingImage(false);
+    }
   };
 
   return (
@@ -428,7 +477,6 @@ function BlogManager() {
                   { label: "TITLE *", key: "title", placeholder: "POST TITLE" },
                   { label: "SLUG *", key: "slug", placeholder: "post-slug" },
                   { label: "READ TIME (MIN)", key: "readTime", placeholder: "5", type: "number" },
-                  { label: "COVER IMAGE URL", key: "coverImage", placeholder: "HTTPS://..." },
                 ].map((f) => (
                   <div key={f.key}>
                     <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2 block">{f.label}</label>
@@ -440,6 +488,23 @@ function BlogManager() {
                     />
                   </div>
                 ))}
+                <div>
+                  <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2 flex items-center justify-between">
+                    COVER IMAGE UPLOAD
+                    {uploadingImage && <span className="text-[#dd4433]">UPLOADING...</span>}
+                  </label>
+                  <input
+                    type="file" accept="image/*"
+                    onChange={handleImageUpload}
+                    disabled={uploadingImage}
+                    className="w-full px-4 py-2 bg-transparent border-[2.5px] border-[#0f0f0f] font-mono text-sm focus:outline-none focus:border-[#dd4433] rounded-none cursor-pointer file:mr-4 file:py-1 file:px-3 file:border-[2.5px] file:border-[#0f0f0f] file:bg-[#0f0f0f] file:text-white file:cursor-pointer hover:file:bg-[#dd4433]"
+                  />
+                  {(form as { coverImage?: string }).coverImage && (
+                    <div className="mt-2 flex items-center gap-2">
+                      <span className="font-mono text-[10px] truncate text-[#888888]">{(form as { coverImage?: string }).coverImage}</span>
+                    </div>
+                  )}
+                </div>
               </div>
               <div>
                 <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2 block">EXCERPT</label>

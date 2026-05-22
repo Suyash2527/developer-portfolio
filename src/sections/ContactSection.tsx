@@ -176,7 +176,7 @@ export default function ContactSection() {
                           suppressHydrationWarning
                           type="text" name="name" value={form.name}
                           onChange={handleChange} required
-                          placeholder="John Doe"
+                          placeholder=""
                           className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] placeholder:text-[#cccccc] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors rounded-none cursor-none"
                         />
                       </div>
@@ -186,7 +186,7 @@ export default function ContactSection() {
                           suppressHydrationWarning
                           type="email" name="email" value={form.email}
                           onChange={handleChange} required
-                          placeholder="john@example.com"
+                          placeholder=""
                           className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] placeholder:text-[#cccccc] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors rounded-none cursor-none"
                         />
                       </div>
@@ -208,7 +208,7 @@ export default function ContactSection() {
                         suppressHydrationWarning
                         name="message" value={form.message}
                         onChange={handleChange} required rows={5}
-                        placeholder="Hi, I'd love to work with you on..."
+                        placeholder=""
                         className="w-full px-4 py-3 bg-transparent border-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] placeholder:text-[#cccccc] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors resize-none rounded-none cursor-none"
                       />
                     </div>

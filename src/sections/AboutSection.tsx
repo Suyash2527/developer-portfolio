@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Reveal } from "@/components/animations/Reveal";
-import { motion } from "framer-motion";
 
 export default function AboutSection() {
   return (
@@ -24,14 +24,12 @@ export default function AboutSection() {
             <div className="w-full aspect-[4/5] border-[2.5px] border-[#0f0f0f] bg-[#0f0f0f] relative overflow-hidden group brutal-shadow hover:translate-x-[-4px] hover:translate-y-[-4px] transition-transform duration-200">
               {/* Halftone pattern / placeholder */}
               <div className="absolute inset-0 opacity-[0.1] bg-graph-paper" />
-              <div className="absolute inset-0 flex items-center justify-center p-8 group-hover:scale-105 transition-transform duration-500">
-                <span className="font-heading text-[60px] md:text-[80px] text-white/20 uppercase break-all leading-[0.8] text-center mix-blend-overlay">
-                  YOUR
-                  <br />
-                  PHOTO
-                  <br />
-                  HERE
-                </span>
+              <div className="absolute inset-0">
+                <img 
+                  src="https://firebasestorage.googleapis.com/v0/b/portfolio-f3a7b.firebasestorage.app/o/WhatsApp%20Image%202026-04-26%20at%206.58.02%20PM.jpeg?alt=media&token=642b4e94-d5fa-4e53-96a7-d580f8edd8fc" 
+                  alt="SUYASH CHAUDHARI Profile" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale hover:grayscale-0"
+                />
               </div>
               <div className="absolute bottom-4 left-4 border-[2px] border-white/50 bg-[#0f0f0f] px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-white/80">
                 FIG. 1

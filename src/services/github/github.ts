@@ -2,7 +2,7 @@
 import type { GitHubRepo, GitHubStats } from "@/types";
 
 const GITHUB_API = "https://api.github.com";
-const USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "yourusername";
+const USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "Suyash2527";
 
 async function githubFetch<T>(endpoint: string): Promise<T> {
   const headers: Record<string, string> = {

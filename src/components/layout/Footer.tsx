@@ -1,7 +1,5 @@
 "use client";
 
-import { SOCIAL_LINKS } from "@/data/portfolio";
-
 export default function Footer() {
   return (
     <footer className="bg-[#0f0f0f] border-t-[2.5px] border-[#0f0f0f]">
@@ -11,7 +9,7 @@ export default function Footer() {
         </p>
         <div className="flex items-center gap-4 text-white">
           <span className="font-mono text-[10px] uppercase tracking-widest text-[#dd4433]">
-            YN. © {new Date().getFullYear()}
+            SUYASH CHAUDHARI © {new Date().getFullYear()}
           </span>
         </div>
       </div>

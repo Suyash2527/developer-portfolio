@@ -45,15 +45,14 @@ const FALLBACK_POSTS: BlogPost[] = [
 
 export default function BlogSection() {
   const [posts, setPosts] = useState<BlogPost[]>(FALLBACK_POSTS);
-  const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     getBlogPosts()
       .then((data) => {
         if (data.length > 0) setPosts(data);
       })
-      .catch(() => {})
-      .finally(() => setLoading(false));
+      .catch(() => {});
   }, []);
 
   return (

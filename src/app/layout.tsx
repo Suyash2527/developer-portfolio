@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Anton, Space_Mono } from "next/font/google";
+import { Anton, Space_Mono, IBM_Plex_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { Toaster } from "react-hot-toast";
 import { CustomCursor } from "@/components/animations/CustomCursor";
-import AgentChat from "@/components/AgentChat";
 
 const anton = Anton({
   weight: "400",
@@ -21,9 +20,48 @@ const spaceMono = Space_Mono({
   display: "swap",
 });
 
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["400", "500", "600"],
+  subsets: ["latin"],
+  variable: "--font-ibm-plex-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "YN. — Designer × Developer",
-  description: "Designer and developer crafting raw, editorial digital experiences from the ground up.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL && process.env.NEXT_PUBLIC_SITE_URL !== 'http://localhost:3000' 
+    ? process.env.NEXT_PUBLIC_SITE_URL 
+    : 'https://portfolio-f3a7b.web.app'),
+  title: {
+    default: "SUYASH CHAUDHARI — Designer × Developer",
+    template: "%s | SUYASH CHAUDHARI"
+  },
+  description: "Designer and developer crafting raw, editorial digital experiences from the ground up. Expert in React, Next.js, and Firebase.",
+  keywords: ["Suyash Chaudhari", "Software Engineer", "Frontend Developer", "Web Designer", "Next.js Developer", "React Developer", "Firebase"],
+  authors: [{ name: "Suyash Chaudhari", url: "https://github.com/Suyash2527" }],
+  creator: "Suyash Chaudhari",
+  verification: {
+    google: "fscddUC9fLghIA26Y8ecpIk_JvZQSGeF3bPy0dc3kvU",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    title: "SUYASH CHAUDHARI — Designer × Developer",
+    description: "Designer and developer crafting raw, editorial digital experiences from the ground up.",
+    siteName: "Suyash Chaudhari Portfolio",
+    images: [{
+      url: "https://firebasestorage.googleapis.com/v0/b/portfolio-f3a7b.firebasestorage.app/o/WhatsApp%20Image%202026-04-26%20at%206.58.02%20PM.jpeg?alt=media&token=642b4e94-d5fa-4e53-96a7-d580f8edd8fc",
+      width: 1200,
+      height: 630,
+      alt: "Suyash Chaudhari"
+    }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SUYASH CHAUDHARI — Designer × Developer",
+    description: "Designer and developer crafting raw, editorial digital experiences from the ground up.",
+    images: ["https://firebasestorage.googleapis.com/v0/b/portfolio-f3a7b.firebasestorage.app/o/WhatsApp%20Image%202026-04-26%20at%206.58.02%20PM.jpeg?alt=media&token=642b4e94-d5fa-4e53-96a7-d580f8edd8fc"],
+  }
 };
 
 export default function RootLayout({
@@ -33,13 +71,29 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${anton.variable} ${spaceMono.variable} font-mono bg-[#f5f0e8] text-[#0f0f0f] antialiased`}>
+      <body className={`${anton.variable} ${spaceMono.variable} ${ibmPlexMono.variable} font-mono bg-[#f5f0e8] text-[#0f0f0f] antialiased`}>
         <div className="page-loader" />
         <div className="noise-overlay" />
         <CustomCursor />
         <ThemeProvider>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Suyash Chaudhari",
+                url: "https://portfolio-f3a7b.web.app",
+                jobTitle: "Software Engineer & Designer",
+                sameAs: [
+                  "https://github.com/Suyash2527",
+                  "https://www.linkedin.com/in/suyash-chaudhari-23768b316"
+                ],
+                image: "https://firebasestorage.googleapis.com/v0/b/portfolio-f3a7b.firebasestorage.app/o/WhatsApp%20Image%202026-04-26%20at%206.58.02%20PM.jpeg?alt=media&token=642b4e94-d5fa-4e53-96a7-d580f8edd8fc"
+              })
+            }}
+          />
           {children}
-          <AgentChat />
           <Toaster
             position="bottom-right"
             toastOptions={{

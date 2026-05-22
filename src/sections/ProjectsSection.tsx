@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -87,7 +88,7 @@ export default function ProjectsSection() {
                 <div className="border-b-[2.5px] border-[#0f0f0f] bg-[#0f0f0f] h-[240px] md:h-[320px] relative overflow-hidden group-hover:bg-[#dd4433] transition-colors duration-500">
                   <div className="absolute inset-0 opacity-[0.05] bg-graph-paper pointer-events-none" />
                   
-                  {project.imageUrl && !project.imageUrl.includes("/projects/") ? (
+                  {project.imageUrl ? (
                     <img 
                       src={project.imageUrl} 
                       alt={project.title} 

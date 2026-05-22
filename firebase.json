@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "site": "suyash-chaudhari",
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-central1"
+    }
+  }
+}

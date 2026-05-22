@@ -5,13 +5,12 @@ import {
   getDocs,
   getDoc,
   addDoc,
-  updateDoc,
+  setDoc,
   deleteDoc,
   query,
   orderBy,
   where,
   serverTimestamp,
-  Timestamp,
 } from "firebase/firestore";
 import { db } from "./firebase";
 import type {
@@ -47,7 +46,7 @@ export async function updateProject(
   id: string,
   data: Partial<Project>
 ): Promise<void> {
-  await updateDoc(doc(db, "projects", id), { ...data, updatedAt: serverTimestamp() });
+  await setDoc(doc(db, "projects", id), { ...data, updatedAt: serverTimestamp() }, { merge: true });
 }
 
 export async function deleteProject(id: string): Promise<void> {
@@ -91,7 +90,7 @@ export async function updateBlogPost(
   id: string,
   data: Partial<BlogPost>
 ): Promise<void> {
-  await updateDoc(doc(db, "blogs", id), { ...data, updatedAt: serverTimestamp() });
+  await setDoc(doc(db, "blogs", id), { ...data, updatedAt: serverTimestamp() }, { merge: true });
 }
 
 export async function deleteBlogPost(id: string): Promise<void> {
@@ -106,7 +105,7 @@ export async function getSkills(): Promise<Skill[]> {
 }
 
 export async function updateSkill(id: string, data: Partial<Skill>): Promise<void> {
-  await updateDoc(doc(db, "skills", id), data);
+  await setDoc(doc(db, "skills", id), data, { merge: true });
 }
 
 /* ─── EXPERIENCE ────────────────────────────────────────────────── */
@@ -135,5 +134,5 @@ export async function getContacts(): Promise<ContactSubmission[]> {
 }
 
 export async function markContactRead(id: string): Promise<void> {
-  await updateDoc(doc(db, "contacts", id), { read: true });
+  await setDoc(doc(db, "contacts", id), { read: true }, { merge: true });
 }
