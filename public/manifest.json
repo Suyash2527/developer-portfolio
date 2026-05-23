@@ -1,0 +1,16 @@
+{
+  "name": "Suyash Chaudhari | Designer & Developer",
+  "short_name": "Suyash",
+  "description": "Designer and developer crafting raw, editorial digital experiences from the ground up.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f0e8",
+  "theme_color": "#0f0f0f",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

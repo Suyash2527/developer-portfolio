@@ -13,11 +13,25 @@
 :root {
   --bg: #f5f0e8;
   --ink: #0f0f0f;
+  --ink-rgb: 15, 15, 15;
   --red: #dd4433;
   --yellow: #f0d43a;
   --muted: #888888;
-  --border: 2.5px solid #0f0f0f;
-  --shadow: 8px 8px 0 #0f0f0f;
+  --border-color: #0f0f0f;
+  --border: 2.5px solid var(--border-color);
+  --shadow: 8px 8px 0 var(--border-color);
+}
+
+.dark {
+  --bg: #0f0f0f;
+  --ink: #f5f0e8;
+  --ink-rgb: 245, 240, 232;
+  --red: #dd4433; /* Keep accent color the same or make it brighter */
+  --yellow: #f0d43a;
+  --muted: #aaaaaa;
+  --border-color: #f5f0e8;
+  --border: 2.5px solid var(--border-color);
+  --shadow: 8px 8px 0 var(--border-color);
 }
 
 html {
@@ -86,14 +100,14 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   }
 
   .outline-button {
-    @apply flex items-center justify-center gap-2 border-[2.5px] border-[#0f0f0f] bg-transparent text-[#0f0f0f] font-mono text-sm uppercase tracking-widest px-6 py-3 transition-colors duration-200 cursor-none;
+    @apply flex items-center justify-center gap-2 border-[2.5px] border-[var(--border-color)] bg-transparent text-[var(--ink)] font-mono text-sm uppercase tracking-widest px-6 py-3 transition-colors duration-200 cursor-none;
   }
   .outline-button:hover {
-    @apply bg-[#0f0f0f] text-[#f5f0e8];
+    @apply bg-[var(--ink)] text-[var(--bg)];
   }
 
   .glow-button, .primary-button {
-    @apply relative flex items-center justify-center gap-2 border-[2.5px] border-[#0f0f0f] bg-[#0f0f0f] text-white font-mono text-sm uppercase tracking-widest px-6 py-3 cursor-none overflow-hidden;
+    @apply relative flex items-center justify-center gap-2 border-[2.5px] border-[var(--border-color)] bg-[var(--ink)] text-[var(--bg)] font-mono text-sm uppercase tracking-widest px-6 py-3 cursor-none overflow-hidden;
   }
   .glow-button::before, .primary-button::before {
     content: '';
@@ -142,8 +156,8 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 /* ── Background Patterns ────────────────────────────────────────── */
 .bg-graph-paper {
   background-image:
-    linear-gradient(rgba(15,15,15,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15,15,15,0.045) 1px, transparent 1px);
+    linear-gradient(rgba(var(--ink-rgb), 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--ink-rgb), 0.08) 1px, transparent 1px);
   background-size: 42px 42px;
   background-position: -1px -1px;
 }

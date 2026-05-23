@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Anton, Space_Mono, IBM_Plex_Mono } from "next/font/google";
 import "@/styles/globals.css";
-import { ThemeProvider } from "@/components/ui/ThemeProvider";
+import { ThemeProvider } from "@/components/theme-provider";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Toaster } from "react-hot-toast";
 import { CustomCursor } from "@/components/animations/CustomCursor";
 
@@ -76,11 +77,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://firebasestorage.googleapis.com" />
       </head>
-      <body className={`${anton.variable} ${spaceMono.variable} ${ibmPlexMono.variable} font-mono bg-[#f5f0e8] text-[#0f0f0f] antialiased`}>
+      <body className={`${anton.variable} ${spaceMono.variable} ${ibmPlexMono.variable} font-mono bg-[var(--bg)] text-[var(--ink)] antialiased transition-colors duration-300`}>
         <div className="page-loader" />
         <div className="noise-overlay" />
         <CustomCursor />
-        <ThemeProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -103,9 +104,9 @@ export default function RootLayout({
             position="bottom-right"
             toastOptions={{
               style: {
-                background: "#0f0f0f",
-                color: "#f5f0e8",
-                border: "2.5px solid #0f0f0f",
+                background: "var(--ink)",
+                color: "var(--bg)",
+                border: "2.5px solid var(--border-color)",
                 borderRadius: "0",
                 fontFamily: "var(--font-space-mono)",
                 fontSize: "0.875rem",
@@ -114,6 +115,7 @@ export default function RootLayout({
             }}
           />
         </ThemeProvider>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || "G-PLACEHOLDER"} />
       </body>
     </html>
   );

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/utils";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#hero" },
@@ -49,13 +50,13 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 h-16 bg-[#f5f0e8] border-b-[2.5px] border-[#0f0f0f]"
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 h-16 bg-[var(--bg)] border-b-[2.5px] border-[var(--border-color)]"
       >
         {/* Logo */}
         <button
           suppressHydrationWarning
           onClick={() => scrollTo("#hero")}
-          className="font-heading text-2xl tracking-tight text-[#0f0f0f] uppercase cursor-none"
+          className="font-heading text-2xl tracking-tight text-[var(--ink)] uppercase cursor-none"
         >
           SUYASH CHAUDHARI
         </button>
@@ -70,14 +71,14 @@ export default function Navbar() {
                 suppressHydrationWarning
                 onClick={() => scrollTo(item.href)}
                 className={cn(
-                  "relative font-mono text-[11px] uppercase tracking-[0.12em] text-[#0f0f0f] pb-1 cursor-none overflow-hidden group",
-                  isActive ? "text-[#0f0f0f]" : "text-[#888888] hover:text-[#0f0f0f]"
+                  "relative font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--ink)] pb-1 cursor-none overflow-hidden group",
+                  isActive ? "text-[var(--ink)]" : "text-[var(--muted)] hover:text-[var(--ink)]"
                 )}
               >
                 {item.label}
                 <span 
                   className={cn(
-                    "absolute bottom-0 left-0 w-full h-[2px] bg-[#dd4433] origin-left transition-transform duration-300 ease-[cubic-bezier(0.77,0,0.175,1)]",
+                    "absolute bottom-0 left-0 w-full h-[2px] bg-[var(--red)] origin-left transition-transform duration-300 ease-[cubic-bezier(0.77,0,0.175,1)]",
                     isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                   )} 
                 />
@@ -88,9 +89,10 @@ export default function Navbar() {
 
         {/* Right controls */}
         <div className="hidden md:flex items-center gap-4">
+          <ThemeToggle />
           <Link
             href="/admin"
-            className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#0f0f0f] border-[2px] border-[#0f0f0f] px-3 py-1 cursor-none hover:bg-[#0f0f0f] hover:text-white transition-colors"
+            className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--ink)] border-[2px] border-[var(--border-color)] px-3 py-1 cursor-none hover:bg-[var(--ink)] hover:text-[var(--bg)] transition-colors"
           >
             Admin
           </Link>
@@ -99,7 +101,7 @@ export default function Navbar() {
         {/* Mobile menu button */}
         <button
           suppressHydrationWarning
-          className="md:hidden text-[#0f0f0f] cursor-none"
+          className="md:hidden text-[var(--ink)] cursor-none"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -128,8 +130,9 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed top-16 left-0 right-0 z-40 bg-[#f5f0e8] border-b-[2.5px] border-[#0f0f0f] p-6 flex flex-col gap-4"
+            className="fixed top-16 left-0 right-0 z-40 bg-[var(--bg)] border-b-[2.5px] border-[var(--border-color)] p-6 flex flex-col gap-4"
           >
+            <div className="flex justify-end mb-2"><ThemeToggle /></div>
             {NAV_ITEMS.map((item, i) => (
               <motion.button
                 key={item.href}
@@ -141,8 +144,8 @@ export default function Navbar() {
                 className={cn(
                   "text-left font-mono text-sm uppercase tracking-widest pb-2 border-b-[1.5px] cursor-none",
                   activeSection === item.href.replace("#", "")
-                    ? "text-[#dd4433] border-[#dd4433]"
-                    : "text-[#0f0f0f] border-transparent"
+                    ? "text-[var(--red)] border-[var(--red)]"
+                    : "text-[var(--ink)] border-transparent"
                 )}
               >
                 {item.label}
@@ -150,7 +153,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/admin"
-              className="mt-4 w-full text-center font-mono text-sm uppercase tracking-widest text-white bg-[#0f0f0f] py-3 cursor-none border-[2.5px] border-[#0f0f0f]"
+              className="mt-4 w-full text-center font-mono text-sm uppercase tracking-widest text-[var(--bg)] bg-[var(--ink)] py-3 cursor-none border-[2.5px] border-[var(--border-color)]"
               onClick={() => setMobileOpen(false)}
             >
               Admin Access

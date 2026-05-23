@@ -1,0 +1,27 @@
+---
+title: "Building Elite Portfolios with Next.js 15"
+excerpt: "How to build blazingly fast, highly secure, and beautifully animated developer portfolios using the latest Next.js App Router."
+date: "2026-05-23"
+tags: ["Next.js", "React", "Design"]
+---
+
+Welcome to my new fully-static local MDX blog! 
+
+By keeping my blog inside my codebase rather than relying on a 3rd party CMS, this website is guaranteed to never experience API outages or database connection issues. It compiles to pure HTML at build time, meaning it's incredibly fast.
+
+### Why Statically Generated Blogs Rule
+1. **Zero latency:** Since there's no database to query when a user clicks a post, the page loads instantly.
+2. **Infinite scalability:** I could get 10 million visitors tomorrow and my Firebase Hosting CDN wouldn't even sweat.
+3. **No vendor lock-in:** I own the markdown files. I can take them to any other framework tomorrow.
+
+```tsx
+// This is how easy it is to fetch these posts in Next.js 15!
+import { getBlogPosts } from "@/lib/blog";
+
+export default async function Blog() {
+  const posts = getBlogPosts();
+  return <pre>{JSON.stringify(posts, null, 2)}</pre>;
+}
+```
+
+Stay tuned for more posts about Software Engineering and UI/UX Design!
