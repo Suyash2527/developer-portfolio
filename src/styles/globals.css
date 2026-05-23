@@ -22,17 +22,7 @@
   --shadow: 8px 8px 0 var(--border-color);
 }
 
-.dark {
-  --bg: #0f0f0f;
-  --ink: #f5f0e8;
-  --ink-rgb: 245, 240, 232;
-  --red: #dd4433; /* Keep accent color the same or make it brighter */
-  --yellow: #f0d43a;
-  --muted: #aaaaaa;
-  --border-color: #f5f0e8;
-  --border: 2.5px solid var(--border-color);
-  --shadow: 8px 8px 0 var(--border-color);
-}
+
 
 html {
   scroll-behavior: smooth;

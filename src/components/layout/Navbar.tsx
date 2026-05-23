@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/utils";
-import { ThemeToggle } from "@/components/ThemeToggle";
+
 
 const NAV_ITEMS = [
   { label: "Home", href: "#hero" },
@@ -89,7 +89,7 @@ export default function Navbar() {
 
         {/* Right controls */}
         <div className="hidden md:flex items-center gap-4">
-          <ThemeToggle />
+
           <Link
             href="/admin"
             className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--ink)] border-[2px] border-[var(--border-color)] px-3 py-1 cursor-none hover:bg-[var(--ink)] hover:text-[var(--bg)] transition-colors"
@@ -132,7 +132,7 @@ export default function Navbar() {
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="fixed top-16 left-0 right-0 z-40 bg-[var(--bg)] border-b-[2.5px] border-[var(--border-color)] p-6 flex flex-col gap-4"
           >
-            <div className="flex justify-end mb-2"><ThemeToggle /></div>
+
             {NAV_ITEMS.map((item, i) => (
               <motion.button
                 key={item.href}

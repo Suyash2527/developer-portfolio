@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Anton, Space_Mono, IBM_Plex_Mono } from "next/font/google";
 import "@/styles/globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Toaster } from "react-hot-toast";
 import { CustomCursor } from "@/components/animations/CustomCursor";
@@ -81,7 +81,6 @@ export default function RootLayout({
         <div className="page-loader" />
         <div className="noise-overlay" />
         <CustomCursor />
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -114,7 +113,6 @@ export default function RootLayout({
               },
             }}
           />
-        </ThemeProvider>
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || "G-PLACEHOLDER"} />
       </body>
     </html>
