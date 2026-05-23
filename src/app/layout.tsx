@@ -71,6 +71,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://firebasestorage.googleapis.com" />
+      </head>
       <body className={`${anton.variable} ${spaceMono.variable} ${ibmPlexMono.variable} font-mono bg-[#f5f0e8] text-[#0f0f0f] antialiased`}>
         <div className="page-loader" />
         <div className="noise-overlay" />

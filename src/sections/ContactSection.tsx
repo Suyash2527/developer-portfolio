@@ -171,44 +171,52 @@ export default function ContactSection() {
                   <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                     <div className="flex flex-col md:flex-row gap-6">
                       <div className="flex-1 flex flex-col">
-                        <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2">NAME *</label>
+                        <label htmlFor="contact-name" className="font-mono text-[10px] uppercase tracking-widest text-[#555555] mb-2">NAME *</label>
                         <input
                           suppressHydrationWarning
+                          id="contact-name"
                           type="text" name="name" value={form.name}
                           onChange={handleChange} required
                           placeholder=""
+                          aria-label="Your name"
                           className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] placeholder:text-[#cccccc] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors rounded-none cursor-none"
                         />
                       </div>
                       <div className="flex-1 flex flex-col">
-                        <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2">EMAIL *</label>
+                        <label htmlFor="contact-email" className="font-mono text-[10px] uppercase tracking-widest text-[#555555] mb-2">EMAIL *</label>
                         <input
                           suppressHydrationWarning
+                          id="contact-email"
                           type="email" name="email" value={form.email}
                           onChange={handleChange} required
                           placeholder=""
+                          aria-label="Your email address"
                           className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] placeholder:text-[#cccccc] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors rounded-none cursor-none"
                         />
                       </div>
                     </div>
 
                     <div className="flex flex-col">
-                      <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2">SUBJECT</label>
+                      <label htmlFor="contact-subject" className="font-mono text-[10px] uppercase tracking-widest text-[#555555] mb-2">SUBJECT</label>
                       <input
                         suppressHydrationWarning
+                        id="contact-subject"
                         type="text" name="subject" value={form.subject}
                         onChange={handleChange}
+                        aria-label="Message subject"
                         className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors rounded-none cursor-none"
                       />
                     </div>
 
                     <div className="flex flex-col">
-                      <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-2">MESSAGE *</label>
+                      <label htmlFor="contact-message" className="font-mono text-[10px] uppercase tracking-widest text-[#555555] mb-2">MESSAGE *</label>
                       <textarea
                         suppressHydrationWarning
+                        id="contact-message"
                         name="message" value={form.message}
                         onChange={handleChange} required rows={5}
                         placeholder=""
+                        aria-label="Your message"
                         className="w-full px-4 py-3 bg-transparent border-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] placeholder:text-[#cccccc] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors resize-none rounded-none cursor-none"
                       />
                     </div>

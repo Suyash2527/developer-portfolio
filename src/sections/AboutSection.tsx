@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import Image from "next/image";
 import { Reveal } from "@/components/animations/Reveal";
 
 export default function AboutSection() {
@@ -25,10 +26,13 @@ export default function AboutSection() {
               {/* Halftone pattern / placeholder */}
               <div className="absolute inset-0 opacity-[0.1] bg-graph-paper" />
               <div className="absolute inset-0">
-                <img 
+                <Image 
                   src="https://firebasestorage.googleapis.com/v0/b/portfolio-f3a7b.firebasestorage.app/o/WhatsApp%20Image%202026-04-26%20at%206.58.02%20PM.jpeg?alt=media&token=642b4e94-d5fa-4e53-96a7-d580f8edd8fc" 
-                  alt="SUYASH CHAUDHARI Profile" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale hover:grayscale-0"
+                  alt="Suyash Chaudhari - Designer and Developer" 
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500 grayscale hover:grayscale-0"
                 />
               </div>
               <div className="absolute bottom-4 left-4 border-[2px] border-white/50 bg-[#0f0f0f] px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-white/80">
