@@ -18,7 +18,7 @@
           { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
           { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
           { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-          { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://firebasestorage.googleapis.com https://avatars.githubusercontent.com; connect-src 'self' https://firebasestorage.googleapis.com;" }
+          { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://firebasestorage.googleapis.com https://avatars.githubusercontent.com https://github.com https://opengraph.githubassets.com https://www.google-analytics.com; connect-src 'self' https://firebasestorage.googleapis.com https://api.github.com https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net;" }
         ]
       }
     ]
