@@ -1,7 +1,5 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
-
 // Image metadata
 export const alt = "Suyash Chaudhari Portfolio";
 export const size = {
@@ -12,11 +10,6 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image() {
-  // Fetch Anton font from Google Fonts to use in the OG image
-  const fontData = await fetch(
-    new URL("https://fonts.gstatic.com/s/anton/v25/1Ptgg87LROyAm3K8-C8.ttf")
-  ).then((res) => res.arrayBuffer());
-
   return new ImageResponse(
     (
       <div
@@ -72,7 +65,7 @@ export default async function Image() {
           <div
             style={{
               fontSize: 120,
-              fontFamily: '"Anton"',
+              fontWeight: 900,
               color: "#0f0f0f",
               lineHeight: 0.9,
               textTransform: "uppercase",
@@ -97,7 +90,7 @@ export default async function Image() {
             <div
               style={{
                 fontSize: 32,
-                fontFamily: '"Anton"',
+                fontWeight: 800,
                 color: "#dd4433",
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
@@ -109,7 +102,7 @@ export default async function Image() {
             <div
               style={{
                 fontSize: 32,
-                fontFamily: '"Anton"',
+                fontWeight: 800,
                 color: "#0f0f0f",
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
@@ -127,7 +120,7 @@ export default async function Image() {
             bottom: "40px",
             right: "40px",
             fontSize: "24px",
-            fontFamily: '"Anton"',
+            fontWeight: 800,
             color: "#0f0f0f",
             border: "4px solid #0f0f0f",
             padding: "8px 16px",
@@ -140,14 +133,6 @@ export default async function Image() {
     ),
     {
       ...size,
-      fonts: [
-        {
-          name: "Anton",
-          data: fontData,
-          style: "normal",
-          weight: 400,
-        },
-      ],
     }
   );
 }
