@@ -1,5 +1,7 @@
 import { ImageResponse } from "next/og";
 
+export const runtime = "edge";
+
 // Image metadata
 export const alt = "Suyash Chaudhari Portfolio";
 export const size = {
