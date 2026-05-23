@@ -35,7 +35,7 @@ export default function BlogListPage() {
             {posts.map((post, i) => (
               <article
                 key={post.slug}
-                className="border-r-[2.5px] border-b-[2.5px] border-[var(--border-color)] p-8 flex flex-col group bg-[var(--bg)] hover:bg-[var(--yellow)] hover:text-[#0f0f0f] transition-colors duration-300"
+                className="border-r-[2.5px] border-b-[2.5px] border-[var(--border-color)] p-8 flex flex-col group bg-[var(--bg)] hover:bg-[var(--yellow)] hover:text-[var(--ink)] transition-colors duration-300"
               >
                 {/* Index number */}
                 <span className="font-heading text-[80px] leading-none text-current opacity-[0.06] select-none mb-2">

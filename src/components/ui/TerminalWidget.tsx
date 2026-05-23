@@ -78,12 +78,12 @@ export function TerminalWidget() {
   return (
     <div className="relative w-full max-w-[320px] font-terminal text-[12px] leading-[1.6]">
       {/* "AVAILABLE FOR WORK" Tag */}
-      <div className="absolute -top-3 -right-3 z-20 bg-[#dd4433] text-white font-mono text-[9px] uppercase tracking-widest px-2 py-1 shadow-brutal border-2 border-[#0f0f0f]">
+      <div className="absolute -top-3 -right-3 z-20 bg-[var(--red)] text-white font-mono text-[9px] uppercase tracking-widest px-2 py-1 shadow-brutal border-2 border-[var(--border-color)]">
         Available for work
       </div>
 
       {/* Terminal Window */}
-      <div className="border-[2.5px] border-[#0f0f0f] bg-[#0d0d0d] shadow-[5px_5px_0_#0f0f0f] relative overflow-hidden flex flex-col h-[280px]">
+      <div className="border-[2.5px] border-[var(--border-color)] bg-[#0d0d0d] shadow-[5px_5px_0_#0f0f0f] relative overflow-hidden flex flex-col h-[280px]">
         {/* CRT Scanline Overlay */}
         <div 
           className="absolute inset-0 pointer-events-none z-10 opacity-[0.15]"
@@ -93,13 +93,13 @@ export function TerminalWidget() {
         />
 
         {/* Top Bar */}
-        <div className="flex items-center justify-between px-3 py-2 border-b-[2.5px] border-[#0f0f0f] bg-[#0f0f0f] z-20">
+        <div className="flex items-center justify-between px-3 py-2 border-b-[2.5px] border-[var(--border-color)] bg-[var(--ink)] z-20">
           <div className="flex gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56] border-[1.5px] border-[#0f0f0f]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e] border-[1.5px] border-[#0f0f0f]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f] border-[1.5px] border-[#0f0f0f]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56] border-[1.5px] border-[var(--border-color)]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e] border-[1.5px] border-[var(--border-color)]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f] border-[1.5px] border-[var(--border-color)]" />
           </div>
-          <div className="font-terminal text-[10px] text-[#888888]">
+          <div className="font-terminal text-[10px] text-[var(--muted)]">
             suyash ~ zsh
           </div>
           <div className="w-[30px]" /> {/* Spacer for centering */}
@@ -138,7 +138,7 @@ export function TerminalWidget() {
         </div>
 
         {/* Footer */}
-        <div className="px-3 py-1.5 border-t-[2.5px] border-[#0f0f0f] bg-[#0d0d0d] flex items-center justify-between z-20">
+        <div className="px-3 py-1.5 border-t-[2.5px] border-[var(--border-color)] bg-[#0d0d0d] flex items-center justify-between z-20">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-[#39ff14] animate-pulse" />
             <span className="text-[#39ff14] text-[9px] uppercase tracking-widest">Running</span>

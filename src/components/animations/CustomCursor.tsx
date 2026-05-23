@@ -79,20 +79,20 @@ export function CustomCursor() {
       >
         <div className={cn(
           "absolute inset-0 border-[1.5px] transition-colors duration-200",
-          isHovering ? "border-[#dd4433]" : "border-[#0f0f0f]"
+          isHovering ? "border-[var(--red)]" : "border-[var(--border-color)]"
         )} />
         <div className={cn(
           "absolute top-0 left-1/2 w-[1.5px] h-full transition-colors duration-200",
-          isHovering ? "bg-[#dd4433]" : "bg-[#0f0f0f]"
+          isHovering ? "bg-[var(--red)]" : "bg-[var(--ink)]"
         )} />
         <div className={cn(
           "absolute top-1/2 left-0 h-[1.5px] w-full transition-colors duration-200",
-          isHovering ? "bg-[#dd4433]" : "bg-[#0f0f0f]"
+          isHovering ? "bg-[var(--red)]" : "bg-[var(--ink)]"
         )} />
       </div>
       <div
         ref={dotRef}
-        className="fixed w-[5px] h-[5px] bg-[#dd4433] pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2"
+        className="fixed w-[5px] h-[5px] bg-[var(--red)] pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2"
       />
     </>
   );

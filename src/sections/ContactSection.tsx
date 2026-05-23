@@ -82,22 +82,22 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 relative bg-[#f5f0e8]">
+    <section id="contact" className="py-24 md:py-32 relative bg-[var(--bg)]">
       <div className="container-max px-6 md:px-10 relative z-10">
 
         {/* Section Number */}
-        <div className="font-heading text-[180px] leading-none text-[#0f0f0f] opacity-[0.04] select-none absolute -top-8 right-0 pointer-events-none">
+        <div className="font-heading text-[180px] leading-none text-[var(--ink)] opacity-[0.04] select-none absolute -top-8 right-0 pointer-events-none">
           05
         </div>
 
         {/* Giant Header */}
         <Reveal>
           <div className="mb-12">
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#dd4433] mb-4">
+            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--red)] mb-4">
               — GET IN TOUCH
             </p>
-            <h2 className="font-heading text-[clamp(60px,11vw,160px)] leading-[0.85] tracking-[-0.02em] uppercase text-[#0f0f0f]">
-              SAY HELLO<span className="text-[#dd4433]">.</span>
+            <h2 className="font-heading text-[clamp(60px,11vw,160px)] leading-[0.85] tracking-[-0.02em] uppercase text-[var(--ink)]">
+              SAY HELLO<span className="text-[var(--red)]">.</span>
             </h2>
           </div>
         </Reveal>
@@ -112,14 +112,14 @@ export default function ContactSection() {
             delay: 0.15, // Sync exactly with the rubber stamp hit
             ease: "easeInOut" 
           }}
-          className="flex flex-col lg:flex-row gap-0 border-[2.5px] border-[#0f0f0f] brutal-shadow"
+          className="flex flex-col lg:flex-row gap-0 border-[2.5px] border-[var(--border-color)] brutal-shadow"
         >
 
           {/* Left Info Panel */}
-          <div className="w-full lg:w-1/3 p-8 border-b-[2.5px] lg:border-b-0 lg:border-r-[2.5px] border-[#0f0f0f] bg-[#f0d43a] flex flex-col justify-between">
+          <div className="w-full lg:w-1/3 p-8 border-b-[2.5px] lg:border-b-0 lg:border-r-[2.5px] border-[var(--border-color)] bg-[var(--yellow)] flex flex-col justify-between">
             <Reveal delay={0.1}>
               <div>
-                <p className="font-mono text-sm text-[#0f0f0f] leading-relaxed mb-8 font-bold uppercase">
+                <p className="font-mono text-sm text-[var(--ink)] leading-relaxed mb-8 font-bold uppercase">
                   Available for freelance opportunities.
                   <br /><br />
                   Don&apos;t hesitate to reach out if you have a project in mind.
@@ -135,7 +135,7 @@ export default function ContactSection() {
                       key={link.label}
                       href={link.href}
                       target={link.external ? "_blank" : undefined}
-                      className="group flex items-center justify-between w-full font-mono text-xs uppercase tracking-widest px-4 py-3 border-[2.5px] border-[#0f0f0f] bg-white text-[#0f0f0f] hover:bg-[#0f0f0f] hover:text-white transition-colors cursor-none"
+                      className="group flex items-center justify-between w-full font-mono text-xs uppercase tracking-widest px-4 py-3 border-[2.5px] border-[var(--border-color)] bg-white text-[var(--ink)] hover:bg-[var(--ink)] hover:text-white transition-colors cursor-none"
                     >
                       {link.label}
                       <span className="opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
@@ -147,7 +147,7 @@ export default function ContactSection() {
               {/* Response time badge */}
               <div className="mt-8 flex items-center gap-3">
                 <span className="inline-block w-2 h-2 bg-green-500 animate-pulse" />
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[#0f0f0f]">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--ink)]">
                   Usually responds within 24h
                 </span>
               </div>
@@ -155,7 +155,7 @@ export default function ContactSection() {
           </div>
 
           {/* Right: Form / Sending / Success */}
-          <div className="w-full lg:w-2/3 bg-[#f5f0e8] relative overflow-hidden">
+          <div className="w-full lg:w-2/3 bg-[var(--bg)] relative overflow-hidden">
             <AnimatePresence mode="wait">
 
               {/* ── IDLE FORM ── */}
@@ -179,7 +179,7 @@ export default function ContactSection() {
                           onChange={handleChange} required
                           placeholder=""
                           aria-label="Your name"
-                          className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] placeholder:text-[#cccccc] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors rounded-none cursor-none"
+                          className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[var(--border-color)] font-mono text-base text-[var(--ink)] placeholder:text-[#cccccc] focus:outline-none focus:bg-white focus:border-[var(--red)] transition-colors rounded-none cursor-none"
                         />
                       </div>
                       <div className="flex-1 flex flex-col">
@@ -191,7 +191,7 @@ export default function ContactSection() {
                           onChange={handleChange} required
                           placeholder=""
                           aria-label="Your email address"
-                          className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] placeholder:text-[#cccccc] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors rounded-none cursor-none"
+                          className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[var(--border-color)] font-mono text-base text-[var(--ink)] placeholder:text-[#cccccc] focus:outline-none focus:bg-white focus:border-[var(--red)] transition-colors rounded-none cursor-none"
                         />
                       </div>
                     </div>
@@ -204,7 +204,7 @@ export default function ContactSection() {
                         type="text" name="subject" value={form.subject}
                         onChange={handleChange}
                         aria-label="Message subject"
-                        className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors rounded-none cursor-none"
+                        className="w-full px-4 py-3 bg-transparent border-b-[2.5px] border-[var(--border-color)] font-mono text-base text-[var(--ink)] focus:outline-none focus:bg-white focus:border-[var(--red)] transition-colors rounded-none cursor-none"
                       />
                     </div>
 
@@ -217,18 +217,18 @@ export default function ContactSection() {
                         onChange={handleChange} required rows={5}
                         placeholder=""
                         aria-label="Your message"
-                        className="w-full px-4 py-3 bg-transparent border-[2.5px] border-[#0f0f0f] font-mono text-base text-[#0f0f0f] placeholder:text-[#cccccc] focus:outline-none focus:bg-white focus:border-[#dd4433] transition-colors resize-none rounded-none cursor-none"
+                        className="w-full px-4 py-3 bg-transparent border-[2.5px] border-[var(--border-color)] font-mono text-base text-[var(--ink)] placeholder:text-[#cccccc] focus:outline-none focus:bg-white focus:border-[var(--red)] transition-colors resize-none rounded-none cursor-none"
                       />
                     </div>
 
                     <div className="flex items-center justify-between mt-2">
-                      <p className="font-mono text-[10px] uppercase tracking-widest text-[#888888]">
+                      <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--muted)]">
                         * Required fields
                       </p>
                       <button
                         suppressHydrationWarning
                         type="submit"
-                        className="group relative font-mono text-sm uppercase tracking-widest font-bold px-8 py-4 border-[2.5px] border-[#0f0f0f] bg-[#0f0f0f] text-white hover:bg-[#dd4433] hover:border-[#dd4433] transition-all duration-300 cursor-none overflow-hidden"
+                        className="group relative font-mono text-sm uppercase tracking-widest font-bold px-8 py-4 border-[2.5px] border-[var(--border-color)] bg-[var(--ink)] text-white hover:bg-[var(--red)] hover:border-[var(--red)] transition-all duration-300 cursor-none overflow-hidden"
                       >
                         <span className="relative z-10 flex items-center gap-3">
                           SEND MESSAGE
@@ -248,7 +248,7 @@ export default function ContactSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="p-8 h-full min-h-[400px] flex flex-col justify-center bg-[#0f0f0f] text-[#f5f0e8]"
+                  className="p-8 h-full min-h-[400px] flex flex-col justify-center bg-[var(--ink)] text-[var(--bg)]"
                 >
                   <div className="max-w-md mx-auto w-full">
                     {/* Blinking Header */}
@@ -256,7 +256,7 @@ export default function ContactSection() {
                       <motion.div 
                         animate={{ opacity: [1, 1, 0, 0] }} 
                         transition={{ duration: 0.8, repeat: Infinity, times: [0, 0.5, 0.5, 1], ease: "linear" }}
-                        className="w-6 h-10 bg-[#dd4433]"
+                        className="w-6 h-10 bg-[var(--red)]"
                       />
                       <h3 className="font-heading text-4xl uppercase tracking-widest text-white">
                         TRANSMITTING
@@ -264,7 +264,7 @@ export default function ContactSection() {
                     </div>
 
                     {/* Fake Terminal Logs */}
-                    <div className="font-mono text-xs uppercase tracking-widest text-[#888888] space-y-3 mb-12">
+                    <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] space-y-3 mb-12">
                       <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }}>
                         &gt; INITIATING SECURE HANDSHAKE... <span className="text-[#15a315]">OK</span>
                       </motion.p>
@@ -274,7 +274,7 @@ export default function ContactSection() {
                       <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}>
                         &gt; ESTABLISHING UPLINK TO SERVER...
                       </motion.p>
-                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="text-[#dd4433] animate-pulse">
+                      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="text-[var(--red)] animate-pulse">
                         &gt; TRANSMITTING DATA PACKETS
                       </motion.p>
                     </div>
@@ -282,7 +282,7 @@ export default function ContactSection() {
                     {/* Brutalist Progress Bar */}
                     <div className="w-full">
                       <div className="flex justify-between mb-3">
-                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#888888]">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]">
                           UPLINK STATUS
                         </span>
                         <span className="font-mono text-[12px] text-white">
@@ -293,7 +293,7 @@ export default function ContactSection() {
                       {/* Heavy blocky progress container */}
                       <div className="w-full h-[36px] border-[2.5px] border-[#333333] p-1 flex">
                         <motion.div
-                          className="h-full bg-[#dd4433]"
+                          className="h-full bg-[var(--red)]"
                           style={{ width: `${progress}%` }}
                           transition={{ duration: 0.1 }}
                         />
@@ -302,7 +302,7 @@ export default function ContactSection() {
                       {/* Decorative hexadecimal data stream */}
                       <div className="mt-4 overflow-hidden h-[15px] opacity-40">
                         <motion.p 
-                          className="font-mono text-[10px] text-[#888888] whitespace-nowrap break-all"
+                          className="font-mono text-[10px] text-[var(--muted)] whitespace-nowrap break-all"
                           animate={{ x: [0, -300] }}
                           transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                         >
@@ -329,12 +329,12 @@ export default function ContactSection() {
                     initial={{ scale: 0, rotate: -15 }}
                     animate={{ scale: 1, rotate: -3 }}
                     transition={{ duration: 0.6, ease: "backOut", delay: 0.1 }}
-                    className="w-28 h-28 border-[4px] border-[#dd4433] flex items-center justify-center text-6xl relative"
+                    className="w-28 h-28 border-[4px] border-[var(--red)] flex items-center justify-center text-6xl relative"
                   >
                     <span>✓</span>
                     {/* Stamp effect */}
                     <motion.div
-                      className="absolute inset-0 bg-[#dd4433]"
+                      className="absolute inset-0 bg-[var(--red)]"
                       initial={{ opacity: 0.6 }}
                       animate={{ opacity: 0 }}
                       transition={{ duration: 0.4, delay: 0.2 }}
@@ -346,13 +346,13 @@ export default function ContactSection() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
                   >
-                    <h3 className="font-heading text-4xl md:text-5xl uppercase text-[#0f0f0f] mb-2">
-                      MESSAGE SENT<span className="text-[#dd4433]">!</span>
+                    <h3 className="font-heading text-4xl md:text-5xl uppercase text-[var(--ink)] mb-2">
+                      MESSAGE SENT<span className="text-[var(--red)]">!</span>
                     </h3>
-                    <p className="font-mono text-sm text-[#888888] uppercase tracking-widest mb-1">
+                    <p className="font-mono text-sm text-[var(--muted)] uppercase tracking-widest mb-1">
                       Delivered successfully
                     </p>
-                    <p className="font-mono text-xs text-[#888888]">
+                    <p className="font-mono text-xs text-[var(--muted)]">
                       I&apos;ll get back to you within 24 hours.
                     </p>
                   </motion.div>
@@ -362,10 +362,10 @@ export default function ContactSection() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
-                    className="overflow-hidden border-y-[2.5px] border-[#0f0f0f] w-full py-2 bg-[#f0d43a]"
+                    className="overflow-hidden border-y-[2.5px] border-[var(--border-color)] w-full py-2 bg-[var(--yellow)]"
                   >
                     <motion.p
-                      className="font-mono text-[10px] uppercase tracking-[0.3em] whitespace-nowrap text-[#0f0f0f]"
+                      className="font-mono text-[10px] uppercase tracking-[0.3em] whitespace-nowrap text-[var(--ink)]"
                       animate={{ x: ["0%", "-50%"] }}
                       transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
                     >
@@ -379,7 +379,7 @@ export default function ContactSection() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
                     onClick={handleReset}
-                    className="font-mono text-xs uppercase tracking-widest px-6 py-3 border-[2.5px] border-[#0f0f0f] bg-white text-[#0f0f0f] hover:bg-[#0f0f0f] hover:text-white transition-colors cursor-none"
+                    className="font-mono text-xs uppercase tracking-widest px-6 py-3 border-[2.5px] border-[var(--border-color)] bg-white text-[var(--ink)] hover:bg-[var(--ink)] hover:text-white transition-colors cursor-none"
                   >
                     SEND ANOTHER MESSAGE
                   </motion.button>

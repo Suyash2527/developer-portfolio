@@ -20,24 +20,24 @@ const SKILLS = [
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-24 md:py-32 relative border-b-[2.5px] border-[#0f0f0f] bg-[#f0d43a]">
+    <section id="skills" className="py-24 md:py-32 relative border-b-[2.5px] border-[var(--border-color)] bg-[var(--yellow)]">
       {/* Giant faded number background */}
-      <div className="absolute top-0 right-0 font-heading text-[clamp(120px,25vw,300px)] text-[#0f0f0f] opacity-[0.04] leading-none select-none pointer-events-none">
+      <div className="absolute top-0 right-0 font-heading text-[clamp(120px,25vw,300px)] text-[var(--ink)] opacity-[0.04] leading-none select-none pointer-events-none">
         02
       </div>
 
       <div className="container-max px-6 md:px-10 relative z-10">
         <Reveal>
-          <h2 className="font-heading text-section-title leading-[0.95] tracking-[-0.02em] uppercase text-[#0f0f0f] mb-12">
+          <h2 className="font-heading text-section-title leading-[0.95] tracking-[-0.02em] uppercase text-[var(--ink)] mb-12">
             Skills <span className="text-white mix-blend-difference">Matrix.</span>
           </h2>
         </Reveal>
 
-        <StaggerReveal className="w-full border-[2.5px] border-[#0f0f0f] bg-[#f5f0e8] flex flex-col brutal-shadow">
+        <StaggerReveal className="w-full border-[2.5px] border-[var(--border-color)] bg-[var(--bg)] flex flex-col brutal-shadow">
           {/* Header row */}
-          <div className="flex border-b-[2.5px] border-[#0f0f0f] bg-[#0f0f0f] text-[#f5f0e8]">
-            <div className="w-[45%] md:w-[40%] p-4 md:p-5 font-mono text-[11px] md:text-[13px] uppercase tracking-widest border-r-[2.5px] border-[#0f0f0f]">Technology</div>
-            <div className="w-[30%] md:w-[40%] p-4 md:p-5 font-mono text-[11px] md:text-[13px] uppercase tracking-widest border-r-[2.5px] border-[#0f0f0f]">Domain</div>
+          <div className="flex border-b-[2.5px] border-[var(--border-color)] bg-[var(--ink)] text-[var(--bg)]">
+            <div className="w-[45%] md:w-[40%] p-4 md:p-5 font-mono text-[11px] md:text-[13px] uppercase tracking-widest border-r-[2.5px] border-[var(--border-color)]">Technology</div>
+            <div className="w-[30%] md:w-[40%] p-4 md:p-5 font-mono text-[11px] md:text-[13px] uppercase tracking-widest border-r-[2.5px] border-[var(--border-color)]">Domain</div>
             <div className="w-[25%] md:w-[20%] p-4 md:p-5 font-mono text-[11px] md:text-[13px] uppercase tracking-widest text-center">Level</div>
           </div>
 
@@ -46,14 +46,14 @@ export default function SkillsSection() {
             <motion.div
               key={skill.name}
               variants={revealItem}
-              className={`flex transition-colors duration-200 hover:bg-[#0f0f0f] hover:text-[#f5f0e8] group ${
-                i !== SKILLS.length - 1 ? "border-b-[2.5px] border-[#0f0f0f]" : ""
+              className={`flex transition-colors duration-200 hover:bg-[var(--ink)] hover:text-[var(--bg)] group ${
+                i !== SKILLS.length - 1 ? "border-b-[2.5px] border-[var(--border-color)]" : ""
               }`}
             >
-              <div className="w-[45%] md:w-[40%] p-4 md:p-5 font-heading text-xl md:text-2xl uppercase border-r-[2.5px] border-[#0f0f0f] flex items-center group-hover:border-[#f5f0e8]">
+              <div className="w-[45%] md:w-[40%] p-4 md:p-5 font-heading text-xl md:text-2xl uppercase border-r-[2.5px] border-[var(--border-color)] flex items-center group-hover:border-[var(--bg)]">
                 {skill.name}
               </div>
-              <div className="w-[30%] md:w-[40%] p-4 md:p-5 font-mono text-[11px] md:text-[13px] uppercase tracking-widest border-r-[2.5px] border-[#0f0f0f] flex items-center group-hover:border-[#f5f0e8]">
+              <div className="w-[30%] md:w-[40%] p-4 md:p-5 font-mono text-[11px] md:text-[13px] uppercase tracking-widest border-r-[2.5px] border-[var(--border-color)] flex items-center group-hover:border-[var(--bg)]">
                 {skill.category}
               </div>
               <div className="w-[25%] md:w-[20%] p-4 md:p-5 font-mono text-[10px] md:text-[12px] uppercase tracking-widest flex items-center justify-center text-center">

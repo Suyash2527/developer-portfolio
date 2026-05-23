@@ -42,7 +42,7 @@ export default function AdminLoginPage() {
 
   if (checking) {
     return (
-      <div className="min-h-screen bg-[#0f0f0f] flex items-center justify-center text-[#15a315]">
+      <div className="min-h-screen bg-[var(--ink)] flex items-center justify-center text-[#15a315]">
         <div className="font-mono text-xl uppercase animate-pulse">
           INITIALIZING SECURE UPLINK...
         </div>
@@ -51,7 +51,7 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0f0f0f] text-[#f5f0e8] flex items-center justify-center p-6 relative overflow-hidden font-mono">
+    <div className="min-h-screen bg-[var(--ink)] text-[var(--bg)] flex items-center justify-center p-6 relative overflow-hidden font-mono">
       {/* Scanline overlay */}
       <div className="absolute inset-0 pointer-events-none z-50 opacity-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%]" />
 
@@ -68,12 +68,12 @@ export default function AdminLoginPage() {
             animate={{ opacity: [1, 0] }}
             transition={{ duration: 0.8, repeat: Infinity, times: [0, 0.5, 0.5, 1], ease: "linear" }}
           >
-            <div className="w-[clamp(40px,8vw,80px)] h-[clamp(20px,4vw,40px)] bg-[#dd4433] mx-auto mb-4" />
+            <div className="w-[clamp(40px,8vw,80px)] h-[clamp(20px,4vw,40px)] bg-[var(--red)] mx-auto mb-4" />
           </motion.div>
-          <h1 className="font-heading text-5xl md:text-7xl uppercase leading-none tracking-[-0.02em] text-[#dd4433]">
+          <h1 className="font-heading text-5xl md:text-7xl uppercase leading-none tracking-[-0.02em] text-[var(--red)]">
             SYSTEM <span className="text-white">AUTH</span>
           </h1>
-          <p className="font-mono text-[10px] text-[#888888] uppercase tracking-[0.2em] mt-2">
+          <p className="font-mono text-[10px] text-[var(--muted)] uppercase tracking-[0.2em] mt-2">
             RESTRICTED ACCESS // AUTHORIZED PERSONNEL ONLY
           </p>
         </div>
@@ -82,20 +82,20 @@ export default function AdminLoginPage() {
         <div className="border-[2.5px] border-[#333333] bg-[#111111] p-1">
           {/* Top Bar */}
           <div className="flex justify-between items-center bg-[#333333] px-3 py-1 mb-6">
-            <span className="font-mono text-[9px] uppercase tracking-widest text-[#888888]">
+            <span className="font-mono text-[9px] uppercase tracking-widest text-[var(--muted)]">
               LOGIN_SHELL.EXE
             </span>
             <div className="flex gap-2">
-              <span className="w-2 h-2 bg-[#888888]" />
-              <span className="w-2 h-2 bg-[#888888]" />
-              <span className="w-2 h-2 bg-[#dd4433]" />
+              <span className="w-2 h-2 bg-[var(--muted)]" />
+              <span className="w-2 h-2 bg-[var(--muted)]" />
+              <span className="w-2 h-2 bg-[var(--red)]" />
             </div>
           </div>
 
           <form onSubmit={handleLogin} className="px-6 pb-8 flex flex-col gap-8">
             <div className="flex flex-col">
-              <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-3 flex items-center gap-2">
-                <span className="text-[#dd4433]">&gt;</span> IDENTIFIER (EMAIL)
+              <label className="font-mono text-[10px] uppercase tracking-widest text-[var(--muted)] mb-3 flex items-center gap-2">
+                <span className="text-[var(--red)]">&gt;</span> IDENTIFIER (EMAIL)
               </label>
               <input
                 type="email"
@@ -104,13 +104,13 @@ export default function AdminLoginPage() {
                 required
                 autoComplete="email"
                 placeholder="root@system.local"
-                className="w-full px-0 py-2 bg-transparent border-b-[2.5px] border-[#333333] font-mono text-base text-white placeholder:text-[#444444] focus:outline-none focus:border-[#dd4433] transition-colors rounded-none cursor-none"
+                className="w-full px-0 py-2 bg-transparent border-b-[2.5px] border-[#333333] font-mono text-base text-white placeholder:text-[#444444] focus:outline-none focus:border-[var(--red)] transition-colors rounded-none cursor-none"
               />
             </div>
 
             <div className="flex flex-col">
-              <label className="font-mono text-[10px] uppercase tracking-widest text-[#888888] mb-3 flex items-center gap-2">
-                <span className="text-[#dd4433]">&gt;</span> PASSPHRASE
+              <label className="font-mono text-[10px] uppercase tracking-widest text-[var(--muted)] mb-3 flex items-center gap-2">
+                <span className="text-[var(--red)]">&gt;</span> PASSPHRASE
               </label>
               <input
                 type="password"
@@ -119,14 +119,14 @@ export default function AdminLoginPage() {
                 required
                 autoComplete="current-password"
                 placeholder="••••••••"
-                className="w-full px-0 py-2 bg-transparent border-b-[2.5px] border-[#333333] font-mono text-base text-white focus:outline-none focus:border-[#dd4433] transition-colors rounded-none cursor-none tracking-[0.3em]"
+                className="w-full px-0 py-2 bg-transparent border-b-[2.5px] border-[#333333] font-mono text-base text-white focus:outline-none focus:border-[var(--red)] transition-colors rounded-none cursor-none tracking-[0.3em]"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full font-mono text-sm uppercase tracking-[0.2em] px-8 py-5 border-[2.5px] border-[#dd4433] bg-[#0f0f0f] text-[#dd4433] hover:bg-[#dd4433] hover:text-[#0f0f0f] transition-colors cursor-none disabled:opacity-50 disabled:cursor-not-allowed mt-4 group relative overflow-hidden"
+              className="w-full font-mono text-sm uppercase tracking-[0.2em] px-8 py-5 border-[2.5px] border-[var(--red)] bg-[var(--ink)] text-[var(--red)] hover:bg-[var(--red)] hover:text-[var(--ink)] transition-colors cursor-none disabled:opacity-50 disabled:cursor-not-allowed mt-4 group relative overflow-hidden"
             >
               <span className="relative z-10 flex items-center justify-center gap-3">
                 {loading ? "AUTHENTICATING..." : "[ EXECUTE_LOGIN ]"}
