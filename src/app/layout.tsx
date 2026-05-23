@@ -50,18 +50,11 @@ export const metadata: Metadata = {
     title: "SUYASH CHAUDHARI — Designer × Developer",
     description: "Designer and developer crafting raw, editorial digital experiences from the ground up.",
     siteName: "Suyash Chaudhari Portfolio",
-    images: [{
-      url: "https://firebasestorage.googleapis.com/v0/b/portfolio-f3a7b.firebasestorage.app/o/WhatsApp%20Image%202026-04-26%20at%206.58.02%20PM.jpeg?alt=media&token=642b4e94-d5fa-4e53-96a7-d580f8edd8fc",
-      width: 1200,
-      height: 630,
-      alt: "Suyash Chaudhari"
-    }]
   },
   twitter: {
     card: "summary_large_image",
     title: "SUYASH CHAUDHARI — Designer × Developer",
     description: "Designer and developer crafting raw, editorial digital experiences from the ground up.",
-    images: ["https://firebasestorage.googleapis.com/v0/b/portfolio-f3a7b.firebasestorage.app/o/WhatsApp%20Image%202026-04-26%20at%206.58.02%20PM.jpeg?alt=media&token=642b4e94-d5fa-4e53-96a7-d580f8edd8fc"],
   }
 };
 
