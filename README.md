@@ -14,7 +14,12 @@
   </p>
 
   <p align="center">
-    <a href="https://portfolio-f3a7b.web.app" target="_blank"><strong>✨ View Live Preview ✨</strong></a>
+    <a href="https://portfolio-f3a7b.web.app" target="_blank">
+      <img src="/src/app/opengraph-image.png" alt="Live Preview" width="800" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+    </a>
+  </p>
+  <p align="center">
+    <a href="https://portfolio-f3a7b.web.app" target="_blank"><strong>✨ Click above to view Live Preview ✨</strong></a>
   </p>
 
   <br />
