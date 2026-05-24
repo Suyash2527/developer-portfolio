@@ -52,17 +52,21 @@ export default function GitHubSection() {
             <div className="border-[2.5px] border-[var(--bg)] bg-[var(--bg)] flex flex-col md:flex-row brutal-shadow">
               {/* Left Info */}
               <div className="p-6 md:p-8 flex items-center gap-6 md:w-1/3 border-b-[2.5px] md:border-b-0 md:border-r-[2.5px] border-[var(--border-color)]">
-                {stats.avatarUrl ? (
-                  <img
-                    src={stats.avatarUrl}
-                    alt={stats.name || GITHUB_USERNAME}
-                    className="w-20 h-20 border-[2.5px] border-[var(--border-color)] grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                ) : (
-                  <div className="w-20 h-20 bg-[var(--red)] border-[2.5px] border-[var(--border-color)] flex items-center justify-center font-heading text-4xl text-[var(--ink)]">
-                    {GITHUB_USERNAME.charAt(0).toUpperCase()}
-                  </div>
-                )}
+                <img
+                  src={`https://github.com/${GITHUB_USERNAME}.png`}
+                  alt={stats.name || GITHUB_USERNAME}
+                  className="w-20 h-20 border-[2.5px] border-[var(--border-color)] grayscale hover:grayscale-0 transition-all duration-300 object-cover bg-[var(--red)]"
+                  onError={(e) => {
+                    // Fallback to initial letter
+                    e.currentTarget.style.display = "none";
+                    if (e.currentTarget.nextElementSibling) {
+                      (e.currentTarget.nextElementSibling as HTMLElement).style.display = "flex";
+                    }
+                  }}
+                />
+                <div className="hidden w-20 h-20 bg-[var(--red)] border-[2.5px] border-[var(--border-color)] items-center justify-center font-heading text-4xl text-[var(--ink)]">
+                  {GITHUB_USERNAME.charAt(0).toUpperCase()}
+                </div>
                 <div>
                   <h3 className="font-heading text-2xl uppercase text-[var(--ink)]">{stats.name || GITHUB_USERNAME}</h3>
                   <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--muted)] mb-2">{stats.bio || "Full-Stack Developer"}</p>
@@ -156,12 +160,12 @@ export default function GitHubSection() {
             href={`https://github.com/${GITHUB_USERNAME}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="block border-[2.5px] border-[var(--bg)] p-4 bg-[var(--ink)] group hover:bg-[var(--bg)] transition-colors duration-300 relative overflow-hidden"
+            className="block border-[2.5px] border-[var(--bg)] p-4 bg-[var(--bg)] group brutal-shadow transition-all duration-300 relative overflow-hidden"
           >
-            <p className="font-mono text-[11px] uppercase tracking-widest text-[var(--bg)] group-hover:text-[var(--ink)] mb-4">
+            <p className="font-mono text-[11px] uppercase tracking-widest text-[var(--ink)] mb-4">
               Commit History ↗
             </p>
-            <div className="filter invert opacity-70 group-hover:opacity-100 group-hover:invert-0 transition-all duration-300">
+            <div className="transition-transform duration-300 group-hover:scale-[1.02]">
               <img
                 src={`https://ghchart.rshah.org/dd4433/${GITHUB_USERNAME}`}
                 alt="GitHub contribution chart"

@@ -55,6 +55,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SUYASH CHAUDHARI — Designer × Developer",
     description: "Designer and developer crafting raw, editorial digital experiences from the ground up.",
+  },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" }
+    ]
   }
 };
 

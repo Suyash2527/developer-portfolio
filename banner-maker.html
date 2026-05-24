@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LinkedIn Banner</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1584px;
+      height: 396px;
+      overflow: hidden;
+    }
+    
+    .banner {
+      width: 1584px;
+      height: 396px;
+      background-color: #f5f0e8;
+      border: 12px solid #0f0f0f;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      /* Brutalist grid background */
+      background-image: linear-gradient(#0f0f0f20 2px, transparent 2px), linear-gradient(90deg, #0f0f0f20 2px, transparent 2px);
+      background-size: 40px 40px;
+    }
+    
+    .left-content {
+      flex: 1;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 2;
+    }
+    
+    .accent {
+      width: 40px;
+      height: 40px;
+      background-color: #dd4433;
+      border: 4px solid #0f0f0f;
+      box-shadow: 6px 6px 0 #0f0f0f;
+      margin-bottom: 20px;
+    }
+    
+    h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 110px;
+      line-height: 0.9;
+      color: #0f0f0f;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    
+    h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: 32px;
+      color: #dd4433;
+      margin-top: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      border-top: 4px solid #0f0f0f;
+      padding-top: 10px;
+      display: inline-block;
+    }
+    
+    .right-image {
+      width: 600px;
+      height: 100%;
+      position: relative;
+      z-index: 1;
+      border-left: 12px solid #0f0f0f;
+      background-color: #0f0f0f;
+    }
+    
+    .right-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      opacity: 0.9;
+      filter: grayscale(20%) contrast(110%);
+    }
+    
+    .serial {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-family: 'Anton', sans-serif;
+      font-size: 24px;
+      background: #0f0f0f;
+      color: #f5f0e8;
+      padding: 4px 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner" id="capture-target">
+    <div class="left-content">
+      <div class="accent"></div>
+      <h1>SOFTWARE<br>ENGINEER</h1>
+      <h2>BUILDER / DESIGNER</h2>
+    </div>
+    
+    <div class="right-image">
+      <!-- We load the absolute path to the user's uploaded image -->
+      <img src="C:/Users/Predator/.gemini/antigravity/brain/a698e0ad-6ab7-4964-8401-5985146b89ad/media__1779543241764.jpg" alt="Profile">
+    </div>
+    
+    <div class="serial">NO. 01</div>
+  </div>
+
+</body>
+</html>
