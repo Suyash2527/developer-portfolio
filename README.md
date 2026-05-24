@@ -13,6 +13,10 @@
     Built for the modern web with Next.js 15, Framer Motion, and Firebase.
   </p>
 
+  <p align="center">
+    <a href="https://portfolio-f3a7b.web.app" target="_blank"><strong>✨ View Live Preview ✨</strong></a>
+  </p>
+
   <br />
 
   <p align="center">
